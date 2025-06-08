@@ -5,3 +5,5 @@ var idle_state = true
 var crouch_state = false
 var walk_state = false
 var run_state = false
+var back_walk_state = false
+var down_back_state = false
