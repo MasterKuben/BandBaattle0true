@@ -77,40 +77,51 @@ func stateRules(current_state, next_state):#The purpose of this is to tell the g
 		"punch": #punch attacks
 			return attackStartState("punch", next_state)
 		"punch_hit":
-			return gatlinks(["kick","instru", "easy_special", "special","super"], next_state)
+			return gatlinks(["kick","instru", "easy_special", "special","super","ground_reversal","air_reversal"], next_state)
 		"punch_whiff":
 			return whiffs(next_state)
 		"kick": #kick attacks
 			return attackStartState("kick", next_state)
 		"kick_hit":
-			return gatlinks(["instru", "easy_special", "special","super"], next_state)
+			return gatlinks(["instru", "easy_special", "special","super","ground_reversal","air_reversal"], next_state)
 		"kick_whiff":
 			return whiffs(next_state)
 		"instru": #instrument attacks
 			return attackStartState("instru", next_state)
 		"instru_hit":
-			return gatlinks(["easy_special", "special", "super"], next_state)
+			return gatlinks(["easy_special", "special", "super","ground_reversal","air_reversal"], next_state)
 		"instru_whiff":
 			return whiffs(next_state)
 		"easy_special": #eays special attacks
 			return attackStartState("easy_special", next_state)
 		"easy_special_hit":
-			return gatlinks(["super"], next_state)
+			return gatlinks(["super","ground_reversal","air_reversal"], next_state)
 		"easy_special_whiff":
 			return whiffs(next_state)
 		"special": #special attacks
 			return attackStartState("special", next_state)
 		"special_hit":
-			return gatlinks(["super"], next_state)
+			return gatlinks(["super","ground_reversal","air_reversal"], next_state)
 		"special_whiff":
 			return whiffs(next_state)
 		"super":
 			return whiffs(next_state)
+		"ground_reversal":
+			return whiffs(next_state)
+		"air_reversal":
+			if next_state in ["land","hitstun"]:
+				return true
+			else:
+				return false
 		"air_attack":
 			return not moveJumpRules(next_state)
 		"hitstun":
 			return whiffs(next_state)
 		"grounded":
+			if next_state in ["wakeup","ground_reversal", "air_reversal", "neutral_jump"]:
+				return true
+			else:
+				return whiffs(next_state)
 	
 
 func moveJumpRules(next_state):
