@@ -1,4 +1,5 @@
 Node
+uniStateMachine
 inputBuffer
 CollisionShape2D
 HurtBox

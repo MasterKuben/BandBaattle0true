@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://1yxe36henl6m"]
+[gd_scene load_steps=16 format=3 uid="uid://1yxe36henl6m"]
 
 [ext_resource type="Script" uid="uid://dchnhipwsuyvp" path="res://Scripts/Player.gd" id="1_p25cs"]
 [ext_resource type="Script" uid="uid://c1nerifcvgc1k" path="res://Scripts/AttackInfo.gd" id="1_q34sk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b8a62gbtxqmes" path="res://Assets/4bk8jshundl71 (1).png" id="4_7t0cb"]
 [ext_resource type="Script" uid="uid://cpg0tt70pxbb3" path="res://Scripts/HurtBox.gd" id="5_5w44i"]
 [ext_resource type="Script" uid="uid://cdfyryw3v0bms" path="res://Scripts/InBuffer.gd" id="6_1wwqi"]
+[ext_resource type="Script" uid="uid://dnh7pj84r3vip" path="res://Scripts/StateMachine.gd" id="7_56vsl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwvoj"]
 radius = 11.0
@@ -190,3 +191,7 @@ shape = SubResource("RectangleShape2D_1wwqi")
 [node name="inputBuffer" type="Node" parent="."]
 script = ExtResource("6_1wwqi")
 metadata/_custom_type_script = "uid://cdfyryw3v0bms"
+
+[node name="uniStateMachine" type="Node" parent="."]
+script = ExtResource("7_56vsl")
+metadata/_custom_type_script = "uid://dnh7pj84r3vip"

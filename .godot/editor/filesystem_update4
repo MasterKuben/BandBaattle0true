@@ -2,3 +2,6 @@ res://Characters/bass_fighter.tscn
 res://bass_fighter_states.gd
 res://Scripts/StateMachine.gd
 res://TestEnv/level_z.tscn
+res://Scripts/bass_fighter_states.gd
+res://Enemies/dummy.tscn
+res://Scripts/Player.gd
