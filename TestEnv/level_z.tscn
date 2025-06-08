@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvvpp8yddp3me"]
+
+[ext_resource type="PackedScene" uid="uid://1yxe36henl6m" path="res://Characters/bass_fighter.tscn" id="1_6s6ke"]
+[ext_resource type="Script" uid="uid://btaqknrnfggjw" path="res://Scripts/fight_data.gd" id="1_010me"]
+[ext_resource type="PackedScene" uid="uid://doewtp5o5ss61" path="res://Enemies/dummy.tscn" id="2_qtp38"]
+
+[node name="LevelZ" type="Node2D"]
+
+[node name="FightData" type="Node" parent="."]
+script = ExtResource("1_010me")
+
+[node name="BassFighter" parent="FightData" instance=ExtResource("1_6s6ke")]
+position = Vector2(-13, 81)
+playerIndex = 0
+
+[node name="Dummy" parent="FightData" instance=ExtResource("2_qtp38")]
+position = Vector2(66, 87)

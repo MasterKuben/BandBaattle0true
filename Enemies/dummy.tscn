@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://doewtp5o5ss61"]
+
+[ext_resource type="Script" uid="uid://b3dpmky87a84r" path="res://Scripts/Enemy.gd" id="1_1p86b"]
+[ext_resource type="Texture2D" uid="uid://c0if2padvxkdp" path="res://icon.svg" id="1_6xd88"]
+[ext_resource type="Script" uid="uid://cpg0tt70pxbb3" path="res://Scripts/HurtBox.gd" id="2_x7prq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1p86b"]
+size = Vector2(123, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qawet"]
+size = Vector2(127, 124)
+
+[node name="Dummy" type="CharacterBody2D"]
+script = ExtResource("1_1p86b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6xd88")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(-0.5, 26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_1p86b")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("2_x7prq")
+metadata/_custom_type_script = "uid://cpg0tt70pxbb3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visible = false
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_qawet")
