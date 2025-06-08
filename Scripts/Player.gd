@@ -97,3 +97,20 @@ func playAttack(motion, atk):
 		print("You can now do special inputs")
 		print(motion)
 		#make it flip if player is flipped
+
+func bufferPriority(newBuff, oldBuff, framesTilluse, buffOrder):#this is to prioritize an input thats being held in buffer in case one has higher priority than other, e.g special over normal attack
+	var order = 0 #rest buffer time if new input has higher priority
+	for x in statePriority:
+		if oldBuff == buffOrder[order]:
+			if oldBuff 
+
+func useforrealprocess(bufferState): #user this logic for the main code
+	if timeToBuff == 0:
+		bufferState = null
+	if bufferState == null:
+		#do the buffered input
+		pass
+	else:
+		#do input immediatly
+		#do the buffered input
+		pass
