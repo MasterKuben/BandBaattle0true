@@ -1,3 +1,4 @@
 res://TestEnv/level_z.tscn
 res://Characters/bass_fighter.tscn
 res://Enemies/dummy.tscn
+res://Scripts/StateMachine.gd
