@@ -1,25 +1,24 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1749389199
-icon.svg::CompressedTexture2D/CompressedTexture2D::6544430069784291589::1748516666::1749388995::1::::<><><>0<>0<>cf2a56294194c1280bafa859770fe110<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-README.md::TextFile/TextFile::-1::1749388654::0::1::::<><><>0<>0<><>::
-::res://Assets/::1749388995
-4bk8jshundl71 (1).png::CompressedTexture2D/CompressedTexture2D::4704583284538919258::1748540555::1749388995::1::::<><><>0<>0<>f21692e5c5e2a78fe99854797a176160<>res://.godot/imported/4bk8jshundl71 (1).png-ef58cefb32cafd5d858c5ef5b652e233.ctex::
-::res://Assets/CharAnims/::1748516746
-::res://Assets/CharData/::1748533844
-Char_Damage_Stun.json::JSON/JSON::-1::1748533827::0::1::::<><><>0<>0<><>::
-::res://Assets/EnemyAnims/::1748516753
-::res://Characters/::1749389006
-bass_fighter.tscn::PackedScene/PackedScene::1875860153562183838::1749389006::0::1::::<><><>0<>0<><>::uid://dchnhipwsuyvp::::res://Characters/Player.gd<>uid://c1nerifcvgc1k::::res://Scripts/AttackInfo.gd<>uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd<>uid://b8a62gbtxqmes::::res://Assets/4bk8jshundl71 (1).png<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd
-Player.gd::GDScript/GDScript::7314892648480399993::1749336226::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://Enemies/::1749389008
-dummy.tscn::PackedScene/PackedScene::8151533911824350896::1749389008::0::1::::<><><>0<>0<><>::uid://b3dpmky87a84r::::res://Scripts/Enemy.gd<>uid://c0if2padvxkdp::::res://icon.svg<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd
-::res://Levels/::1748516698
-::res://Scripts/::1749336054
-AttackInfo.gd::GDScript/GDScript::6624861867275266438::1748540690::0::1::::attackInfo<>Node2D<><>0<>0<><>::
-Enemy.gd::GDScript/GDScript::4358834187089521167::1749144915::0::1::::<>CharacterBody2D<><>0<>0<><>::
-fight_data.gd::GDScript/GDScript::3720998752301840960::1749336054::0::1::::<>Node<><>0<>0<><>::
-Hitbox.gd::GDScript/GDScript::3876317622717260946::1749227540::0::1::::HitBox<>Area2D<><>0<>0<><>::
-HurtBox.gd::GDScript/GDScript::5839613191918631050::1749227540::0::1::::HurtBox<>Area2D<><>0<>0<><>::
-InBuffer.gd::GDScript/GDScript::4995218649240716230::1749317243::0::1::::inputBuffer<>Node<><>0<>0<><>::
-::res://TestEnv/::1749388809
-level_z.tscn::PackedScene/PackedScene::8677519012600107284::1749388809::0::1::::<><><>0<>0<><>::uid://1yxe36henl6m::::res://Characters/bass_fighter.tscn<>uid://btaqknrnfggjw::::res://Scripts/fight_data.gd<>uid://doewtp5o5ss61::::res://Enemies/dummy.tscn
+::res://::1749397598
+bass_fighter_states.gd::GDScript::2038503238841713731::1749397597::0::1::::<>Node<><>0<>0<><>::
+icon.svg::CompressedTexture2D/CompressedTexture2D::6544430069784291589::1749397200::1749397329::1::::<><><>0<>0<>cf2a56294194c1280bafa859770fe110<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+README.md::TextFile/TextFile::-1::1749397200::0::1::::<><><>0<>0<><>::
+::res://Assets/::1749397330
+4bk8jshundl71 (1).png::CompressedTexture2D/CompressedTexture2D::4704583284538919258::1749397200::1749397330::1::::<><><>0<>0<>f21692e5c5e2a78fe99854797a176160<>res://.godot/imported/4bk8jshundl71 (1).png-ef58cefb32cafd5d858c5ef5b652e233.ctex::
+::res://Assets/CharData/::1749397241
+Char_Damage_Stun.json::JSON/JSON::-1::1749397200::0::1::::<><><>0<>0<><>::
+::res://Characters/::1749397597
+bass_fighter.tscn::PackedScene::1875860153562183838::1749397597::0::1::::<><><>0<>0<><>::uid://dchnhipwsuyvp::::res://Scripts/Player.gd<>uid://c1nerifcvgc1k::::res://Scripts/AttackInfo.gd<>uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd<>uid://b8a62gbtxqmes::::res://Assets/4bk8jshundl71 (1).png<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd
+::res://Enemies/::1749397241
+dummy.tscn::PackedScene/PackedScene::8151533911824350896::1749397200::0::1::::<><><>0<>0<><>::uid://b3dpmky87a84r::::res://Scripts/Enemy.gd<>uid://c0if2padvxkdp::::res://icon.svg<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd
+::res://Scripts/::1749397597
+AttackInfo.gd::GDScript/GDScript::6624861867275266438::1749397200::0::1::::attackInfo<>Node2D<><>0<>0<><>::
+Enemy.gd::GDScript/GDScript::4358834187089521167::1749397200::0::1::::<>CharacterBody2D<><>0<>0<><>::
+fight_data.gd::GDScript/GDScript::3720998752301840960::1749397200::0::1::::<>Node<><>0<>0<><>::
+Hitbox.gd::GDScript/GDScript::3876317622717260946::1749397200::0::1::::HitBox<>Area2D<><>0<>0<><>::
+HurtBox.gd::GDScript/GDScript::5839613191918631050::1749397200::0::1::::HurtBox<>Area2D<><>0<>0<><>::
+InBuffer.gd::GDScript/GDScript::4995218649240716230::1749397200::0::1::::inputBuffer<>Node<><>0<>0<><>::
+Player.gd::GDScript::7314892648480399993::1749397200::0::1::::<>CharacterBody2D<><>0<>0<><>::
+StateMachine.gd::GDScript::8088137918359409987::1749397597::0::1::::uniStateMachine<>Node<><>0<>0<><>::
+::res://TestEnv/::1749397241
+level_z.tscn::PackedScene/PackedScene::8677519012600107284::1749397200::0::1::::<><><>0<>0<><>::uid://1yxe36henl6m::::res://Characters/bass_fighter.tscn<>uid://btaqknrnfggjw::::res://Scripts/fight_data.gd<>uid://doewtp5o5ss61::::res://Enemies/dummy.tscn

@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://1yxe36henl6m"]
 
-[ext_resource type="Script" uid="uid://dchnhipwsuyvp" path="res://Characters/Player.gd" id="1_p25cs"]
+[ext_resource type="Script" uid="uid://dchnhipwsuyvp" path="res://Scripts/Player.gd" id="1_p25cs"]
 [ext_resource type="Script" uid="uid://c1nerifcvgc1k" path="res://Scripts/AttackInfo.gd" id="1_q34sk"]
 [ext_resource type="Script" uid="uid://bvhync7p3nbd7" path="res://Scripts/Hitbox.gd" id="1_ttu68"]
 [ext_resource type="Texture2D" uid="uid://b8a62gbtxqmes" path="res://Assets/4bk8jshundl71 (1).png" id="4_7t0cb"]
