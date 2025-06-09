@@ -82,12 +82,13 @@ func _physics_process(delta: float) -> void:
 		playAttack(motion, "5K")
 	elif Input.is_action_pressed("down%s" % [playerIndex]):
 		pass
+		
+	if neutral:
+		buffer.inputGrab("5")
 	# Move the character
 	self.velocity = velocity
 	move_and_slide()
 	
-	if neutral:
-		buffer.inputGrab("5")
 	
 func playAttack(motion, atk):
 	neutral = false
@@ -103,16 +104,22 @@ func bufferPriority(newBuff, oldBuff, framesTilluse, buffOrder):#this is to prio
 	var order = 0 #rest buffer time if new input has higher priority
 	for x in statePriority:
 		if oldBuff == buffOrder[order]:
-			return [oldBuff, frameTilluse]
+			return [oldBuff, framesTilluse]
+		else:
+			return [newBuff, 5]
 		
 
-func useforrealprocess(bufferState): #user this logic for the main code
+func useforrealprocess(bufferState, timeToBuff): #user this logic for the main code
 	if timeToBuff == 0:
 		bufferState = null
 	if bufferState == null:
-		#do the buffered input
+		#do the input no problem
 		pass
 	else:
-		#do input immediatly
-		#do the buffered input
+		#check to see if something besides buffered input is being done
+		#first check if the current state is a can be cancled by something else
+		#if yes, then check if buffered input state can be the next cancled into state, if no then check if the buffered state will be the next state
 		pass
+
+func inputProcessor():#use this to do inputs
+	pass
