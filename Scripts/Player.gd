@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var gravity: float = 0
 @export var max_fall_speed: float = 1000.0
 @export var entType:String = "player%s"% [playerIndex]
+var statePriority = ["ground_reversal", "air_reversal", "neutral_jump", "super", "special", "easy_special", "instru", "kick", "punch",]
 var neutral
 
 func _physics_process(delta: float) -> void:
@@ -102,7 +103,8 @@ func bufferPriority(newBuff, oldBuff, framesTilluse, buffOrder):#this is to prio
 	var order = 0 #rest buffer time if new input has higher priority
 	for x in statePriority:
 		if oldBuff == buffOrder[order]:
-			if oldBuff 
+			return [oldBuff, frameTilluse]
+		
 
 func useforrealprocess(bufferState): #user this logic for the main code
 	if timeToBuff == 0:
