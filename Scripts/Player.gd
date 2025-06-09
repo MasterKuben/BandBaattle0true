@@ -122,4 +122,8 @@ func useforrealprocess(bufferState, timeToBuff): #user this logic for the main c
 		pass
 
 func inputProcessor():#use this to do inputs
+	#Put move underneth
+	
+	#put neutral attacks
+	
 	pass
