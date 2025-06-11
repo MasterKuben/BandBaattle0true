@@ -20,6 +20,10 @@ func _physics_process(delta: float) -> void:
 	var moving_right = Input.is_action_pressed("right%s" % [playerIndex])
 	var moving_left = Input.is_action_pressed("left%s" % [playerIndex])
 	var moving_down = Input.is_action_pressed("down%s" % [playerIndex])
+	var punch = Input.is_action_pressed("P%s" % [playerIndex])
+	var kick = Input.is_action_pressed("K%s" % [playerIndex])
+	var instru = Input.is_action_pressed("S%s" % [playerIndex])
+	var easy_special = Input.is_action_pressed("I%s" % [playerIndex])
 	
 	if moving_left:
 		neutral = false
@@ -53,7 +57,26 @@ func _physics_process(delta: float) -> void:
 			buffer.inputGrab("3")  # pressing right while facing right
 		else:
 			buffer.inputGrab("1")
-		
+	elif moving_down && punch:
+		buffer.inputGrab("2")
+		buffer.inputGrab("P")
+		#add motion check if needed
+		$AnimationPlayer.play("2P")
+	elif moving_down && kick:
+		buffer.inputGrab("2")
+		buffer.inputGrab("K")
+		#add motion check if needed
+		$AnimationPlayer.play("2K")
+	elif moving_down && instru:
+		buffer.inputGrab("2")
+		buffer.inputGrab("I")
+		#add motion check if needed
+		$AnimationPlayer.play("2I")
+	elif moving_down && easy_special:
+		buffer.inputGrab("2")
+		buffer.inputGrab("S")
+		#add motion check if needed
+		$AnimationPlayer.play("2S")
 		#add command normal like using the above system, use action Just pressed for attacks
 		
 		
@@ -69,20 +92,26 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("up%s"% [playerIndex]):
 			velocity.y = jump_velocity
 			#make jump arc
-		elif Input.is_action_just_pressed("P%s" % [playerIndex]):
-			$AnimationPlayer.play("5P")
-		
-		elif Input.is_action_just_pressed("K%s"% [playerIndex]):
-			buffer.inputGrabber("K") 
-			$AnimationPlayer.play("5K")
+			#PUT INPUT FOR ATTACKS HERE ONMCE UVE MADE A STAGE
+
 			
 	if Input.is_action_just_pressed("K%s"% [playerIndex]):
 		buffer.inputGrab("K")
 		var motion = buffer.motionGet()
 		playAttack(motion, "5K")
-	elif Input.is_action_pressed("down%s" % [playerIndex]):
-		pass
-		
+	elif Input.is_action_pressed("P%s" % [playerIndex]):
+		buffer.inputGrab("P")
+		var motion = buffer.motionGet()
+		playAttack(motion, "5P")
+	elif Input.is_action_pressed("S%s" % [playerIndex]):
+		buffer.inputGrab("S")
+		var motion = buffer.motionGet()
+		playAttack(motion, "5S")
+	elif Input.is_action_pressed("I%s" % [playerIndex]):
+		buffer.inputGrab("I")
+		var motion = buffer.motionGet()
+		playAttack(motion, "5I")
+
 	if neutral:
 		buffer.inputGrab("5")
 	# Move the character
