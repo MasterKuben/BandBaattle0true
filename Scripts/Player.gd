@@ -20,10 +20,10 @@ func _physics_process(delta: float) -> void:
 	var moving_right = Input.is_action_pressed("right%s" % [playerIndex])
 	var moving_left = Input.is_action_pressed("left%s" % [playerIndex])
 	var moving_down = Input.is_action_pressed("down%s" % [playerIndex])
-	var punch = Input.is_action_pressed("P%s" % [playerIndex])
-	var kick = Input.is_action_pressed("K%s" % [playerIndex])
-	var instru = Input.is_action_pressed("IS%s" % [playerIndex])
-	var easy_special = Input.is_action_pressed("S%s" % [playerIndex])
+	var punch = Input.is_action_just_pressed("P%s" % [playerIndex])
+	var kick = Input.is_action_just_pressed("K%s" % [playerIndex])
+	var instru = Input.is_action_just_pressed("IS%s" % [playerIndex])
+	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
 	
 	var inputs = [moving_down,moving_right,moving_left,punch,kick,instru,easy_special]
 	var inputs_true = []
@@ -88,12 +88,12 @@ func _physics_process(delta: float) -> void:
 		[moving_left, punch]:
 			neutral = false
 			if $Sprite2D.scale.x < 0:
-				buffer.inputGrab("4")  # pressing left while facing right
+				buffer.inputGrab("4")  
 				buffer.inputGrab("P")
 				var motion = buffer.motionGet()
 				playAttack(motion, "4P")
 			else:
-				buffer.inputGrab("6")  # pressing left while facing left
+				buffer.inputGrab("6")  
 				buffer.inputGrab("P")
 				var motion = buffer.motionGet()
 				playAttack(motion, "6P")
@@ -133,6 +133,58 @@ func _physics_process(delta: float) -> void:
 				buffer.inputGrab("S")
 				var motion = buffer.motionGet()
 				playAttack(motion, "6S")
+		[moving_right, punch]:
+			neutral = false
+			velocity.x = speed
+			if $Sprite2D.scale.x > 0:
+				buffer.inputGrab("6")  
+				buffer.inputGrab("P")
+				var motion = buffer.motionGet()
+				playAttack(motion, "6P")
+			else:
+				buffer.inputGrab("4")  
+				buffer.inputGrab("P")
+				var motion = buffer.motionGet()
+				playAttack(motion, "4P")
+		[moving_right, kick]:
+			neutral = false
+			velocity.x = speed
+			if $Sprite2D.scale.x > 0:
+				buffer.inputGrab("6")  
+				buffer.inputGrab("K")
+				var motion = buffer.motionGet()
+				playAttack(motion, "6K")
+			else:
+				buffer.inputGrab("4")  
+				buffer.inputGrab("K")
+				var motion = buffer.motionGet()
+				playAttack(motion, "4K")
+		[moving_right, instru]:
+			neutral = false
+			velocity.x = speed
+			if $Sprite2D.scale.x > 0:
+				buffer.inputGrab("6")  
+				buffer.inputGrab("I")
+				var motion = buffer.motionGet()
+				playAttack(motion, "6I")
+			else:
+				buffer.inputGrab("4")  
+				buffer.inputGrab("I")
+				var motion = buffer.motionGet()
+				playAttack(motion, "4I")
+		[moving_right, easy_special]:
+			neutral = false
+			velocity.x = speed
+			if $Sprite2D.scale.x > 0:
+				buffer.inputGrab("6")  
+				buffer.inputGrab("S")
+				var motion = buffer.motionGet()
+				playAttack(motion, "6S")
+			else:
+				buffer.inputGrab("4")  
+				buffer.inputGrab("P")
+				var motion = buffer.motionGet()
+				playAttack(motion, "4S")
 		#add command normal like using the above system, use action Just pressed for attacks
 		
 		
@@ -162,7 +214,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("S%s" % [playerIndex]):
 		buffer.inputGrab("S")
 		var motion = buffer.motionGet()
-		playAttack(motion, "5S")
+		#playAttack(motion, "5S")
 	elif Input.is_action_pressed("I%s" % [playerIndex]):
 		buffer.inputGrab("I")
 		var motion = buffer.motionGet()
