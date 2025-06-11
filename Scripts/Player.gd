@@ -22,61 +22,117 @@ func _physics_process(delta: float) -> void:
 	var moving_down = Input.is_action_pressed("down%s" % [playerIndex])
 	var punch = Input.is_action_pressed("P%s" % [playerIndex])
 	var kick = Input.is_action_pressed("K%s" % [playerIndex])
-	var instru = Input.is_action_pressed("S%s" % [playerIndex])
-	var easy_special = Input.is_action_pressed("I%s" % [playerIndex])
+	var instru = Input.is_action_pressed("IS%s" % [playerIndex])
+	var easy_special = Input.is_action_pressed("S%s" % [playerIndex])
 	
-	if moving_left:
-		neutral = false
-		velocity.x = -speed
-		if $Sprite2D.scale.x < 0:
-			buffer.inputGrab("4")  # pressing left while facing right
-		else:
-			buffer.inputGrab("6")  # pressing left while facing left
-	elif moving_right:
-		neutral = false
-		velocity.x = speed
-		if $Sprite2D.scale.x > 0:
-			buffer.inputGrab("6")  # pressing right while facing right
-		else:
-			buffer.inputGrab("4")  # pressing right while facing left
-	elif moving_down:
-		neutral = false
-		buffer.inputGrab("2")
+	var inputs = [moving_down,moving_right,moving_left,punch,kick,instru,easy_special]
+	var inputs_true = []
+	for x in inputs:
+		if x == true:
+			inputs_true.append(x)
 	
-	if moving_down && moving_left:
-		neutral = false
-		velocity.x = -speed
-		if $Sprite2D.scale.x < 0:
-			buffer.inputGrab("1")  # pressing left while facing right
-		else:
-			buffer.inputGrab("3")
-	elif moving_down && moving_right:
-		neutral = false
-		velocity.x = speed
-		if $Sprite2D.scale.x > 0:
-			buffer.inputGrab("3")  # pressing right while facing right
-		else:
-			buffer.inputGrab("1")
-	elif moving_down && punch:
-		buffer.inputGrab("2")
-		buffer.inputGrab("P")
-		#add motion check if needed
-		$AnimationPlayer.play("2P")
-	elif moving_down && kick:
-		buffer.inputGrab("2")
-		buffer.inputGrab("K")
-		#add motion check if needed
-		$AnimationPlayer.play("2K")
-	elif moving_down && instru:
-		buffer.inputGrab("2")
-		buffer.inputGrab("I")
-		#add motion check if needed
-		$AnimationPlayer.play("2I")
-	elif moving_down && easy_special:
-		buffer.inputGrab("2")
-		buffer.inputGrab("S")
-		#add motion check if needed
-		$AnimationPlayer.play("2S")
+	match inputs_true:
+		[moving_left]:
+			neutral = false
+			velocity.x = -speed
+			if $Sprite2D.scale.x < 0:
+				buffer.inputGrab("4")  # pressing left while facing right
+			else:
+				buffer.inputGrab("6")  # pressing left while facing left
+		[moving_right]:
+			neutral = false
+			velocity.x = speed
+			if $Sprite2D.scale.x > 0:
+				buffer.inputGrab("6")  # pressing right while facing right
+			else:
+				buffer.inputGrab("4")  # pressing right while facing left
+		[moving_down]:
+			neutral = false
+			buffer.inputGrab("2")
+		[moving_down,moving_left]:
+			neutral = false
+			if $Sprite2D.scale.x < 0:
+				buffer.inputGrab("1")  # pressing left while facing right
+			else:
+				buffer.inputGrab("3")
+		[moving_down,moving_right]:
+			neutral = false
+			if $Sprite2D.scale.x > 0:
+				buffer.inputGrab("3")  # pressing right while facing right
+			else:
+				buffer.inputGrab("1")
+		[moving_down,punch]:
+			neutral = false
+			buffer.inputGrab("2")
+			buffer.inputGrab("P")
+			#add motion check if needed
+			$AnimationPlayer.play("2P")
+		[moving_down,kick]:
+			neutral = false
+			buffer.inputGrab("2")
+			buffer.inputGrab("K")
+			#add motion check if needed
+			$AnimationPlayer.play("2K")
+		[moving_down,instru]:
+			neutral = false
+			buffer.inputGrab("2")
+			buffer.inputGrab("I")
+			#add motion check if needed
+			$AnimationPlayer.play("2I")
+		[moving_down,easy_special]:
+			neutral = false
+			buffer.inputGrab("2")
+			buffer.inputGrab("S")
+			#add motion check if needed
+			$AnimationPlayer.play("2S")
+		[moving_left, punch]:
+			neutral = false
+			if $Sprite2D.scale.x < 0:
+				buffer.inputGrab("4")  # pressing left while facing right
+				buffer.inputGrab("P")
+				var motion = buffer.motionGet()
+				playAttack(motion, "4P")
+			else:
+				buffer.inputGrab("6")  # pressing left while facing left
+				buffer.inputGrab("P")
+				var motion = buffer.motionGet()
+				playAttack(motion, "6P")
+		[moving_left, kick]:
+			neutral = false
+			if $Sprite2D.scale.x < 0:
+				buffer.inputGrab("4")  # pressing left while facing right
+				buffer.inputGrab("K")
+				var motion = buffer.motionGet()
+				playAttack(motion, "4K")
+			else:
+				buffer.inputGrab("6")  # pressing left while facing left
+				buffer.inputGrab("K")
+				var motion = buffer.motionGet()
+				playAttack(motion, "6K")
+		[moving_left, instru]:
+			neutral = false
+			if $Sprite2D.scale.x < 0:
+				buffer.inputGrab("4")  # pressing left while facing right
+				buffer.inputGrab("I")
+				var motion = buffer.motionGet()
+				playAttack(motion, "4I")
+			else:
+				buffer.inputGrab("6")  # pressing left while facing left
+				buffer.inputGrab("I")
+				var motion = buffer.motionGet()
+				playAttack(motion, "6I")
+		[moving_left, easy_special]:
+			neutral = false
+			if $Sprite2D.scale.x < 0:
+				buffer.inputGrab("4")  # pressing left while facing right
+				buffer.inputGrab("S")
+				var motion = buffer.motionGet()
+				playAttack(motion, "4S")
+			else:
+				buffer.inputGrab("6")  # pressing left while facing left
+				buffer.inputGrab("S")
+				var motion = buffer.motionGet()
+				playAttack(motion, "6S")
 		#add command normal like using the above system, use action Just pressed for attacks
 		
 		
@@ -155,4 +211,10 @@ func inputProcessor():#use this to do inputs
 	
 	#put neutral attacks
 	
+	pass
+	
+func leftInputs(input):
+	pass
+
+func rightInputs(input):
 	pass
