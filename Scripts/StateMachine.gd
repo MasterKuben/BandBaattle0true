@@ -45,12 +45,12 @@ var wake_up
 var grounded
 
 var jump_options = ["land", "air_block","jump_p", "jump_k", "jump_i", "jump_s", "jump_special", "hitstun"]
-var neutral_states = ["idle","crouch", "walk", "run", "back_walk", "down_back", "hitstun"]
+var neutral_states = ["idle","crouch", "walk", "dash", "back_walk", "down_back", "hitstun"]
 var jumps = ["forward_jump","back_jump","neutral_jump", "hitstun"]
 var nex_statt_state = {"idle": true}
  #Maybe use key to try and get the statee
 
-func stateRules(current_state, next_state):#The purpose of this is to tell the game whether or not its allowed to go to the next state depending on what the previous state is
+func stateCancels(current_state, next_state):#The purpose of this is to tell the game whether or not its allowed to go to the next state depending on what the previous state is
 	match current_state:#this is like a switch case
 		"idle":#not moving options
 			return not moveJumpRules(next_state)
@@ -58,7 +58,7 @@ func stateRules(current_state, next_state):#The purpose of this is to tell the g
 			return not moveJumpRules(next_state)
 		"walk":#moving options
 			return not moveJumpRules(next_state)
-		"run":
+		"dash":
 			return not moveJumpRules(next_state)
 		"back_walk":
 			return not moveJumpRules(next_state)
@@ -116,7 +116,7 @@ func stateRules(current_state, next_state):#The purpose of this is to tell the g
 		"air_attack":
 			return not moveJumpRules(next_state)
 		"hitstun":
-			return whiffs(next_state)
+			return false
 		"grounded":
 			if next_state in ["wakeup","ground_reversal", "air_reversal", "neutral_jump"]:
 				return true

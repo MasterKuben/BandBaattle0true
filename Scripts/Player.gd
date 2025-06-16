@@ -6,18 +6,38 @@ extends CharacterBody2D
 @export var gravity: float = 0
 @export var max_fall_speed: float = 1000.0
 @export var entType:String = "player%s"% [playerIndex]
-var statePriority = ["ground_reversal", "air_reversal", "neutral_jump", "super", "special", "easy_special", "instru", "kick", "punch",]
+var statePriority = ["ground_reversal", "air_reversal", "neutral_jump", "super", "special", "easy_special", "instru", "kick", "punch"]
 var neutral
+var animInput = "5"
+var bufferTime = 5
+var stateNput = ["0",""]
+var current_state = "idle"
+var bufferInput = null
+@onready var stateCheck = $uniStateMachine
 
 func _physics_process(delta: float) -> void:
-	inputProcessor(delta)
+	stateNput = inputProcessor(delta)
+	animInput = stateNput[0]
+	var state = stateNput[1]
+	if stateCheck.stateCancels(current_state, state):
+		current_state = state
+		playAnim(animInput)
+	elif bufferTime == 0 && bufferInput != null:
+		playAnim(bufferInput)
+		bufferInput = null
+	elif bufferTime == 0 && animInput != "5":
+		playAnim(animInput)
+	elif bufferTime != 0 && animInput != "5":
+		var newInfo = bufferPriority(animInput, bufferInput, bufferTime, statePriority)
+		bufferInput = newInfo[0]
+		bufferTime = newInfo[1]
 	
 func playAttack(motion, atk):
 	neutral = false
 	if motion == null:
-		$AnimationPlayer.play(atk)
+		return atk
 	else:
-		$AnimationPlayer.play(motion)
+		return motion
 		print("You can now do special inputs")
 		print(motion)
 		#make it flip if player is flipped
@@ -25,8 +45,8 @@ func playAttack(motion, atk):
 func bufferPriority(newBuff, oldBuff, framesTilluse, buffOrder):#this is to prioritize an input thats being held in buffer in case one has higher priority than other, e.g special over normal attack
 	var order = 0 #rest buffer time if new input has higher priority
 	for x in statePriority:
-		if oldBuff == buffOrder[order]:
-			return [oldBuff, framesTilluse]
+		if oldBuff == x:
+			return [oldBuff, framesTilluse-1]
 		else:
 			return [newBuff, 5]
 		
@@ -58,7 +78,7 @@ func inputProcessor(delta):#use this to do inputs
 	var kick = Input.is_action_just_pressed("K%s" % [playerIndex])
 	var instru = Input.is_action_just_pressed("IS%s" % [playerIndex])
 	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
-	
+	var playerPut = "5"
 	var inputs = [moving_down,moving_right,moving_left,punch,kick,instru,easy_special]
 	var inputs_true = []
 	for x in inputs:
@@ -100,73 +120,85 @@ func inputProcessor(delta):#use this to do inputs
 			buffer.inputGrab("2")
 			buffer.inputGrab("P")
 			#add motion check if needed
-			$AnimationPlayer.play("2P")
+			playerPut = "2P"
+			return playerPut
 		[moving_down,kick]:
 			neutral = false
 			buffer.inputGrab("2")
 			buffer.inputGrab("K")
 			#add motion check if needed
-			$AnimationPlayer.play("2K")
+			playerPut = "2K"
+			return playerPut
 		[moving_down,instru]:
 			neutral = false
 			buffer.inputGrab("2")
 			buffer.inputGrab("I")
 			#add motion check if needed
-			$AnimationPlayer.play("2I")
+			playerPut = "2I"
+			return playerPut
 		[moving_down,easy_special]:
 			neutral = false
 			buffer.inputGrab("2")
 			buffer.inputGrab("S")
 			#add motion check if needed
-			$AnimationPlayer.play("2S")
+			playerPut = "2S"
+			return playerPut
 		[moving_left, punch]:
 			neutral = false
 			if $Sprite2D.scale.x < 0:
 				buffer.inputGrab("4")  
 				buffer.inputGrab("P")
 				var motion = buffer.motionGet()
-				playAttack(motion, "4P")
+				playerPut = playAttack(motion, "4P")
+				return [playerPut,"punch"]
 			else:
 				buffer.inputGrab("6")  
 				buffer.inputGrab("P")
 				var motion = buffer.motionGet()
-				playAttack(motion, "6P")
+				playerPut = playAttack(motion, "6P")
+				return [playerPut,"punch"]
 		[moving_left, kick]:
 			neutral = false
 			if $Sprite2D.scale.x < 0:
 				buffer.inputGrab("4")  # pressing left while facing right
 				buffer.inputGrab("K")
 				var motion = buffer.motionGet()
-				playAttack(motion, "4K")
+				playerPut = playAttack(motion, "4K")
+				return [playerPut,"kick"]
 			else:
 				buffer.inputGrab("6")  # pressing left while facing left
 				buffer.inputGrab("K")
 				var motion = buffer.motionGet()
-				playAttack(motion, "6K")
+				playerPut = playAttack(motion, "6K")
+				return [playerPut,"kick"]
 		[moving_left, instru]:
 			neutral = false
 			if $Sprite2D.scale.x < 0:
 				buffer.inputGrab("4")  # pressing left while facing right
 				buffer.inputGrab("I")
 				var motion = buffer.motionGet()
-				playAttack(motion, "4I")
+				playerPut = playAttack(motion, "4I")
+				return [playerPut,"instru"]
 			else:
 				buffer.inputGrab("6")  # pressing left while facing left
 				buffer.inputGrab("I")
 				var motion = buffer.motionGet()
-				playAttack(motion, "6I")
+				playerPut = playAttack(motion, "6I")
+				return [playerPut,"instru"]
 		[moving_left, easy_special]:
 			neutral = false
 			if $Sprite2D.scale.x < 0:
 				buffer.inputGrab("4")  # pressing left while facing right
 				buffer.inputGrab("S")
 				var motion = buffer.motionGet()
-				playAttack(motion, "4S")
+				playerPut = playAttack(motion, "4S")
+				return [playerPut,"easy_special"]
 			else:
 				buffer.inputGrab("6")  # pressing left while facing left
 				buffer.inputGrab("S")
 				var motion = buffer.motionGet()
-				playAttack(motion, "6S")
+				playerPut = playAttack(motion, "6S")
+				return [playerPut,"easy_special"]
 		[moving_right, punch]:
 			neutral = false
 			velocity.x = speed
@@ -174,12 +206,14 @@ func inputProcessor(delta):#use this to do inputs
 				buffer.inputGrab("6")  
 				buffer.inputGrab("P")
 				var motion = buffer.motionGet()
-				playAttack(motion, "6P")
+				playerPut = playAttack(motion, "6P")
+				return [playerPut,"punch"]
 			else:
 				buffer.inputGrab("4")  
 				buffer.inputGrab("P")
 				var motion = buffer.motionGet()
-				playAttack(motion, "4P")
+				playerPut = playAttack(motion, "4P")
+				return [playerPut,"punch"]
 		[moving_right, kick]:
 			neutral = false
 			velocity.x = speed
@@ -187,12 +221,14 @@ func inputProcessor(delta):#use this to do inputs
 				buffer.inputGrab("6")  
 				buffer.inputGrab("K")
 				var motion = buffer.motionGet()
-				playAttack(motion, "6K")
+				playerPut = playAttack(motion, "6K")
+				return [playerPut,"kick"]
 			else:
 				buffer.inputGrab("4")  
 				buffer.inputGrab("K")
 				var motion = buffer.motionGet()
-				playAttack(motion, "4K")
+				playerPut = playAttack(motion, "4K")
+				return [playerPut,"kick"]
 		[moving_right, instru]:
 			neutral = false
 			velocity.x = speed
@@ -200,12 +236,14 @@ func inputProcessor(delta):#use this to do inputs
 				buffer.inputGrab("6")  
 				buffer.inputGrab("I")
 				var motion = buffer.motionGet()
-				playAttack(motion, "6I")
+				playerPut = playAttack(motion, "6I")
+				return [playerPut,"instru"]
 			else:
 				buffer.inputGrab("4")  
 				buffer.inputGrab("I")
 				var motion = buffer.motionGet()
-				playAttack(motion, "4I")
+				playerPut = playAttack(motion, "4I")
+				return [playerPut,"instru"]
 		[moving_right, easy_special]:
 			neutral = false
 			velocity.x = speed
@@ -213,12 +251,14 @@ func inputProcessor(delta):#use this to do inputs
 				buffer.inputGrab("6")  
 				buffer.inputGrab("S")
 				var motion = buffer.motionGet()
-				playAttack(motion, "6S")
+				playerPut = playAttack(motion, "6S")
+				return [playerPut,"easy_special"]
 			else:
 				buffer.inputGrab("4")  
-				buffer.inputGrab("P")
+				buffer.inputGrab("S")
 				var motion = buffer.motionGet()
-				playAttack(motion, "4S")
+				playerPut = playAttack(motion, "4S")
+				return [playerPut,"easy_special"]
 		#add command normal like using the above system, use action Just pressed for attacks
 		
 		
@@ -240,28 +280,38 @@ func inputProcessor(delta):#use this to do inputs
 	if Input.is_action_just_pressed("K%s"% [playerIndex]):
 		buffer.inputGrab("K")
 		var motion = buffer.motionGet()
-		playAttack(motion, "5K")
+		playerPut = playAttack(motion, "5K")
+		return [playerPut,"kick"]
 	elif Input.is_action_pressed("P%s" % [playerIndex]):
 		buffer.inputGrab("P")
 		var motion = buffer.motionGet()
-		playAttack(motion, "5P")
+		playerPut = playAttack(motion, "5P")
+		return [playerPut,"punch"]
 	elif Input.is_action_pressed("S%s" % [playerIndex]):
 		buffer.inputGrab("S")
 		var motion = buffer.motionGet()
-		#playAttack(motion, "5S")
+		playerPut = playAttack(motion, "5S")
+		return [playerPut,"easy_special"]
 	elif Input.is_action_pressed("I%s" % [playerIndex]):
 		buffer.inputGrab("I")
 		var motion = buffer.motionGet()
-		playAttack(motion, "5I")
+		playerPut = playAttack(motion, "5I")
+		return [playerPut,"instru"]
 
 	if neutral:
-		buffer.inputGrab("5")
+		if not is_on_floor():
+			buffer.inputGrab("5")
+			return ["5","idle"] # this should be neutral jump later
+		else:
+			buffer.inputGrab("5")
+			return ["5","idle"]
 	# Move the character
 	self.velocity = velocity
 	move_and_slide()
+	return ["5","idle"]
 	
-func leftInputs(input):
-	pass
-
-func rightInputs(input):
-	pass
+func playAnim(animInput):
+	if animInput == "5":
+		$AnimationPlayer.play("idle")
+	else:
+		$AnimationPlayer.play(animInput)
