@@ -1,5 +1,5 @@
-res://TestEnv/level_z.tscn
+res://Scripts/InBuffer.gd
 res://Scripts/Player.gd
+res://TestEnv/level_z.tscn
 res://Enemies/dummy.tscn
 res://Characters/bass_fighter.tscn
-res://Scripts/InBuffer.gd

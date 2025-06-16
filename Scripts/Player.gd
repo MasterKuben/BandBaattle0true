@@ -10,6 +10,40 @@ var statePriority = ["ground_reversal", "air_reversal", "neutral_jump", "super",
 var neutral
 
 func _physics_process(delta: float) -> void:
+	inputProcessor(delta)
+	
+func playAttack(motion, atk):
+	neutral = false
+	if motion == null:
+		$AnimationPlayer.play(atk)
+	else:
+		$AnimationPlayer.play(motion)
+		print("You can now do special inputs")
+		print(motion)
+		#make it flip if player is flipped
+
+func bufferPriority(newBuff, oldBuff, framesTilluse, buffOrder):#this is to prioritize an input thats being held in buffer in case one has higher priority than other, e.g special over normal attack
+	var order = 0 #rest buffer time if new input has higher priority
+	for x in statePriority:
+		if oldBuff == buffOrder[order]:
+			return [oldBuff, framesTilluse]
+		else:
+			return [newBuff, 5]
+		
+
+func useforrealprocess(bufferState, timeToBuff): #user this logic for the main code
+	if timeToBuff == 0:
+		bufferState = null
+	if bufferState == null:
+		#do the input no problem
+		pass
+	else:
+		#check to see if something besides buffered input is being done
+		#first check if the current state is a can be cancled by something else
+		#if yes, then check if buffered input state can be the next cancled into state, if no then check if the buffered state will be the next state
+		pass
+
+func inputProcessor(delta):#use this to do inputs
 	var velocity = self.velocity
 	neutral = true #checks if nothing has been input
 	var buffer = $inputBuffer
@@ -225,45 +259,6 @@ func _physics_process(delta: float) -> void:
 	# Move the character
 	self.velocity = velocity
 	move_and_slide()
-	
-	
-func playAttack(motion, atk):
-	neutral = false
-	if motion == null:
-		$AnimationPlayer.play(atk)
-	else:
-		$AnimationPlayer.play(motion)
-		print("You can now do special inputs")
-		print(motion)
-		#make it flip if player is flipped
-
-func bufferPriority(newBuff, oldBuff, framesTilluse, buffOrder):#this is to prioritize an input thats being held in buffer in case one has higher priority than other, e.g special over normal attack
-	var order = 0 #rest buffer time if new input has higher priority
-	for x in statePriority:
-		if oldBuff == buffOrder[order]:
-			return [oldBuff, framesTilluse]
-		else:
-			return [newBuff, 5]
-		
-
-func useforrealprocess(bufferState, timeToBuff): #user this logic for the main code
-	if timeToBuff == 0:
-		bufferState = null
-	if bufferState == null:
-		#do the input no problem
-		pass
-	else:
-		#check to see if something besides buffered input is being done
-		#first check if the current state is a can be cancled by something else
-		#if yes, then check if buffered input state can be the next cancled into state, if no then check if the buffered state will be the next state
-		pass
-
-func inputProcessor():#use this to do inputs
-	#Put move underneth
-	
-	#put neutral attacks
-	
-	pass
 	
 func leftInputs(input):
 	pass
