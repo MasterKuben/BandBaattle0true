@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	stateNput = inputProcessor(delta)
 	animInput = stateNput[0]
 	var state = stateNput[1]
+	#Fix buffer system
 	if stateCheck.stateCancels(current_state, state):
 		current_state = state
 		playAnim(animInput)
@@ -312,6 +313,6 @@ func inputProcessor(delta):#use this to do inputs
 	
 func playAnim(animInput):
 	if animInput == "5":
-		$AnimationPlayer.play("idle")
+		$AnimationPlayer.play("walk")
 	else:
 		$AnimationPlayer.play(animInput)
