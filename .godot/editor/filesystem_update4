@@ -1,4 +1,3 @@
-res://TestEnv/level_z.tscn
-res://Enemies/dummy.tscn
-res://Characters/bass_fighter.tscn
-res://Scripts/Player.gd
+res://CharacterCode.gd
+res://character_states.tscn
+res://idle.gd
