@@ -20,9 +20,25 @@ func _physics_process(delta: float) -> void:
 		match CurrentState:
 			"Idle":
 				pass
+			"Crouch":
+				pass
 			"AttackStart":
 				pass
 			"AttackAct":
 				pass
 			"AttackRec":
+				pass
+			"Hitstun":
+				pass
+			"Movement":
+				pass
+			"KnockdownFall":
+				pass
+			"Knockdown":
+				pass
+			"HardKnockdown":
+				pass
+			"Super":
+				pass
+			"Summon":
 				pass
