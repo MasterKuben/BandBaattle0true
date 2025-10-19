@@ -9,25 +9,40 @@ func IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru
 	if moving_down == true:
 		if not (true in allinputs):
 			return "Idle"
-		if not (true in attackPuts):
-			if (moving_right && charX == 1) ||(moving_left && charX == -1):
+		elif not (true in attackPuts):
+			if (moving_down && (moving_right && charX == -1) ||(moving_left && charX == 1)):
+				inputValue = "1"
+				buffer.add(inputValue)
+				return "Down_Back"
+			elif (moving_down && (moving_right && charX == 1) ||(moving_left && charX == -1)):
+				inputValue = "3"
+				buffer.add(inputValue)
+				return "Down_Forward"
+			elif (moving_right && charX == 1) ||(moving_left && charX == -1):
 				inputValue = "6"
 				buffer.add(inputValue)
 				return "Forward"
 			elif (moving_right && charX == -1) ||(moving_left && charX == 1):
 				inputValue = "4"
 				buffer.add(inputValue)
-				return "Backward"
-			elif (moving_down && (moving_right && charX == -1) ||(moving_left && charX == 1)):
-				inputValue = "1"
+				return ["Backward", "4"]
+			elif moving_down:
+				inputValue = "2"
 				buffer.add(inputValue)
-				return "Down_Back"
-			elif (moving_down && (moving_right && charX == 1) ||(moving_left && charX == -1)):
-				inputValue = "1"
+				return ["Down","2"]
+		elif not(true in mvePuts):
+			if punch:
+				inputValue = "5P"
 				buffer.add(inputValue)
-				return "Down_Forward"
-		if not(true in mvePuts):
-			
-	
+				var STATE = buffer.motionGet("5P")
+				return ["AttackStart","5P"]
+				
+		else:
+			if moving_down:
+				pass
+			elif (moving_right && charX == 1) ||(moving_left && charX == -1):
+				pass
+			elif (moving_right && charX == -1) ||(moving_left && charX == 1):
+				pass
 	else:
 		pass
