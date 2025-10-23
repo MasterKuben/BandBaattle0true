@@ -1,5 +1,7 @@
-extends Node2D
+extends CharacterBody2D
 
+@onready var buffer = $inputBuffer
+@onready var IdleState = $Idle
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
 @export var entType:String = "player%s"% [playerIndex]
 var CurrentState = "Idle"
@@ -19,7 +21,9 @@ func _physics_process(delta: float) -> void:
 	if hit == false:
 		match CurrentState:
 			"Idle":
-				pass
+				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				buffer.inputGrab(StateInput[1])
+				CurrentState = StateInput[0]
 			"Crouch":
 				pass
 			"AttackStart":
@@ -42,3 +46,4 @@ func _physics_process(delta: float) -> void:
 				pass
 			"Summon":
 				pass
+				

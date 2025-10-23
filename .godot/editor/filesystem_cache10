@@ -1,9 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1760828925
-CharacterCode.gd::GDScript::6874610319861821376::1759268753::0::1::::<>Node2D<><>0<>0<><>::
-character_states.tscn::PackedScene::5846344486460175347::1759277117::0::1::::<><><>0<>0<><>::uid://c47d3exainxnc::::res://CharacterCode.gd<>uid://c2lfsmf1a5s46::::res://idle.gd
+::res://::1761254509
+CharacterCode.gd::GDScript::6874610319861821376::1760831102::0::1::::<>Node2D<><>0<>0<><>::
+character_states.tscn::PackedScene::5846344486460175347::1760832009::0::1::::<><><>0<>0<><>::uid://c47d3exainxnc::::res://CharacterCode.gd<>uid://c2lfsmf1a5s46::::res://idle.gd
 icon.svg::CompressedTexture2D/CompressedTexture2D::6544430069784291589::1748516666::1749388995::1::::<><><>0<>0<>cf2a56294194c1280bafa859770fe110<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-idle.gd::GDScript::6690984669348600241::1759268753::0::1::::<>Node2D<><>0<>0<><>::
+idle.gd::GDScript::6690984669348600241::1760832009::0::1::::<>Node2D<><>0<>0<><>::
 README.md::TextFile/TextFile::-1::1749388654::0::1::::<><><>0<>0<><>::
 ::res://Assets/::1757246633
 4bk8jshundl71 (1).png::CompressedTexture2D/CompressedTexture2D::4704583284538919258::1748540555::1749388995::1::::<><><>0<>0<>f21692e5c5e2a78fe99854797a176160<>res://.godot/imported/4bk8jshundl71 (1).png-ef58cefb32cafd5d858c5ef5b652e233.ctex::
