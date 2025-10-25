@@ -10,7 +10,7 @@ func motionGet():
 		var motionPut = []
 		var inputNode = 0
 		var motionComp = x.split("")
-		print(motionComp)
+		#print(motionComp)
 		for y in lastInputs:
 			if y == motionComp[inputNode]:
 				print(x[inputNode])

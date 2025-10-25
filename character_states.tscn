@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpkao7dkjfwc6"]
+[gd_scene load_steps=4 format=3 uid="uid://cpkao7dkjfwc6"]
 
+[ext_resource type="Script" uid="uid://c47d3exainxnc" path="res://CharacterCode.gd" id="1_kpcjk"]
 [ext_resource type="Script" uid="uid://c2lfsmf1a5s46" path="res://idle.gd" id="2_60r2y"]
+[ext_resource type="Script" uid="uid://cdfyryw3v0bms" path="res://Scripts/InBuffer.gd" id="2_y0fu3"]
 
 [node name="CharacterStates" type="Node2D"]
 
-[node name="Idle" type="Node2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_kpcjk")
+
+[node name="inputBuffer" type="Node" parent="CharacterBody2D"]
+script = ExtResource("2_y0fu3")
+metadata/_custom_type_script = "uid://cdfyryw3v0bms"
+
+[node name="Idle" type="Node2D" parent="CharacterBody2D"]
 script = ExtResource("2_60r2y")

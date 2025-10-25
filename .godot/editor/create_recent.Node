@@ -1,12 +1,12 @@
+inputBuffer
+CharacterBody2D
 Node2D
 Node
 uniStateMachine
-inputBuffer
 CollisionShape2D
 HurtBox
 Area2D
 CollisionPolygon2D
 Sprite2D
-CharacterBody2D
 HitBox
 AnimationPlayer

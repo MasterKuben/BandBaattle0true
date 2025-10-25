@@ -1,3 +1,7 @@
 res://character_states.tscn
-res://CharacterCode.gd
+res://TestEnv/level_z.tscn
+res://Enemies/dummy.tscn
+res://Characters/bass_fighter.tscn
 res://idle.gd
+res://CharacterCode.gd
+res://Scripts/InBuffer.gd

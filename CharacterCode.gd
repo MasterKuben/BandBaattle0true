@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
 @export var entType:String = "player%s"% [playerIndex]
 var CurrentState = "Idle"
+var atk
 var hit = false
 
 func _physics_process(delta: float) -> void:
@@ -23,10 +24,13 @@ func _physics_process(delta: float) -> void:
 			"Idle":
 				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
 				buffer.inputGrab(StateInput[1])
+				atk = getSpecial(StateInput[1])
 				CurrentState = StateInput[0]
+				print(CurrentState, atk)
 			"Crouch":
 				pass
 			"AttackStart":
+				
 				pass
 			"AttackAct":
 				pass
@@ -47,3 +51,11 @@ func _physics_process(delta: float) -> void:
 			"Summon":
 				pass
 				
+			#put all the directional and movement stuff here
+
+func getSpecial(tempatk):
+	var newAtk = buffer.motionGet()
+	if newAtk == null:
+		return tempatk
+	else:
+		return newAtk
