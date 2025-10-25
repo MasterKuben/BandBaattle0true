@@ -15,7 +15,7 @@ func IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru
 				return ["Down_Back","1"]
 			elif (moving_down && (moving_right && charX == 1) ||(moving_left && charX == -1)):
 				inputValue = "3"
-				return ["Down_Forward","3"]
+				return ["Crouch","3"]
 			elif (moving_right && charX == 1) ||(moving_left && charX == -1):
 				inputValue = "6"
 				return ["Forward","6"]
