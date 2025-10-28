@@ -2,8 +2,12 @@ extends CharacterBody2D
 
 @onready var buffer = $inputBuffer
 @onready var IdleState = $Idle
+@onready var aStartState = $AttackStart
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
 @export var entType:String = "player%s"% [playerIndex]
+@export var cancelWin = false
+@export var startup = false
+@export var active = false
 var CurrentState = "Idle"
 var atk
 var hit = false
@@ -30,15 +34,16 @@ func _physics_process(delta: float) -> void:
 			"Crouch":
 				pass
 			"AttackStart":
-				
-				pass
+				CurrentState = aStartState.checkAnim(atk, startup, active)
+				if CurrentState == "AttackStart":
+					$AnimationPlayer.play(atk)
 			"AttackAct":
-				pass
+				print("WWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
 			"AttackRec":
 				pass
 			"Hitstun":
 				pass
-			"Movement":
+			"Forward":
 				pass
 			"KnockdownFall":
 				pass
@@ -50,8 +55,29 @@ func _physics_process(delta: float) -> void:
 				pass
 			"Summon":
 				pass
-				
+			"Forward":
+				pass
+			"Down_Back":
+				pass
+			"Backward":
+				pass
+			"Jump":
+				pass
 			#put all the directional and movement stuff here
+	else:
+		match CurrentState:
+			"KnockdownFall":
+				pass
+			"Knockdown":
+				pass
+			"HardKnockdown":
+				pass
+			"Down_Back":
+				pass
+			"Backward":
+				pass
+			_:#this is default for any other state a player can be hit in.
+				pass
 
 func getSpecial(tempatk):
 	var newAtk = buffer.motionGet()

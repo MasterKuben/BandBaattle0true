@@ -1,13 +1,84 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpkao7dkjfwc6"]
+[gd_scene load_steps=8 format=3 uid="uid://cpkao7dkjfwc6"]
 
 [ext_resource type="Script" uid="uid://c47d3exainxnc" path="res://CharacterCode.gd" id="1_kpcjk"]
 [ext_resource type="Script" uid="uid://c2lfsmf1a5s46" path="res://idle.gd" id="2_60r2y"]
+[ext_resource type="Script" uid="uid://c1hbn875p1mi3" path="res://AttackStart.gd" id="2_mcea8"]
 [ext_resource type="Script" uid="uid://cdfyryw3v0bms" path="res://Scripts/InBuffer.gd" id="2_y0fu3"]
+
+[sub_resource type="Animation" id="Animation_y0fu3"]
+resource_name = "5P"
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:startup")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.583333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mcea8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:startup")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhic8"]
+_data = {
+&"5P": SubResource("Animation_y0fu3"),
+&"RESET": SubResource("Animation_mcea8")
+}
 
 [node name="CharacterStates" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_kpcjk")
+
+[node name="AttackStart" type="Node" parent="CharacterBody2D"]
+script = ExtResource("2_mcea8")
+metadata/_custom_type_script = "uid://c1hbn875p1mi3"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_nhic8")
+}
 
 [node name="inputBuffer" type="Node" parent="CharacterBody2D"]
 script = ExtResource("2_y0fu3")
