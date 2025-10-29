@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpkao7dkjfwc6"]
+[gd_scene load_steps=10 format=3 uid="uid://cpkao7dkjfwc6"]
 
 [ext_resource type="Script" uid="uid://c47d3exainxnc" path="res://CharacterCode.gd" id="1_kpcjk"]
 [ext_resource type="Script" uid="uid://c2lfsmf1a5s46" path="res://idle.gd" id="2_60r2y"]
 [ext_resource type="Script" uid="uid://c1hbn875p1mi3" path="res://AttackStart.gd" id="2_mcea8"]
 [ext_resource type="Script" uid="uid://cdfyryw3v0bms" path="res://Scripts/InBuffer.gd" id="2_y0fu3"]
+[ext_resource type="Script" uid="uid://sbjgrc2li6f8" path="res://AttackAct.gd" id="5_nhic8"]
+[ext_resource type="Script" uid="uid://ojbjt4tl8lpx" path="res://cancelCheck.gd" id="6_3gsgg"]
 
 [sub_resource type="Animation" id="Animation_y0fu3"]
 resource_name = "5P"
@@ -68,21 +70,30 @@ _data = {
 
 [node name="CharacterStates" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="TestMan" type="CharacterBody2D" parent="."]
 script = ExtResource("1_kpcjk")
 
-[node name="AttackStart" type="Node" parent="CharacterBody2D"]
-script = ExtResource("2_mcea8")
-metadata/_custom_type_script = "uid://c1hbn875p1mi3"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TestMan"]
 libraries = {
 &"": SubResource("AnimationLibrary_nhic8")
 }
 
-[node name="inputBuffer" type="Node" parent="CharacterBody2D"]
+[node name="Idle" type="Node2D" parent="TestMan"]
+visible = false
+script = ExtResource("2_60r2y")
+
+[node name="AttackStart" type="Node" parent="TestMan"]
+script = ExtResource("2_mcea8")
+metadata/_custom_type_script = "uid://c1hbn875p1mi3"
+
+[node name="AttackAct" type="Node" parent="TestMan"]
+script = ExtResource("5_nhic8")
+metadata/_custom_type_script = "uid://sbjgrc2li6f8"
+
+[node name="cancelCheck" type="Node" parent="TestMan/AttackAct"]
+script = ExtResource("6_3gsgg")
+metadata/_custom_type_script = "uid://ojbjt4tl8lpx"
+
+[node name="inputBuffer" type="Node" parent="TestMan"]
 script = ExtResource("2_y0fu3")
 metadata/_custom_type_script = "uid://cdfyryw3v0bms"
-
-[node name="Idle" type="Node2D" parent="CharacterBody2D"]
-script = ExtResource("2_60r2y")

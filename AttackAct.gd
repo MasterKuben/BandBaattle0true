@@ -2,15 +2,17 @@ class_name AttackAct
 extends Node
 
 var atk_anim
-func checkAnimation(atk, cancelWin, punch, kick, instru, easy_special, moving_down, moving_right, moving_left, new_move, active):
+@onready var canCheck = $cancelCheck
+func checkAnimation(atk, cancelWin, active, new_move, charName):
+	var cancelMove
 	if cancelWin == true:
-		return ["AttackStart", new_move]
+		cancelMove = canCheck.getCancels(atk, new_move, charName)
+		if cancelMove:
+			return ["AttackStart", new_move]
 	elif active == false:
 		return ["AttackRec", "5"]
+	elif new_move == null:
+		return ["AttackRec", "5"]
 	else:
-		return ["AttackAct","5"]
+		return ["AttackAct",new_move]
 	
-
-func animationCancel(punch, kick, instru, easy_special, moving_down, moving_right, moving_left, newAtk):
-	var attacks = [punch, kick, instru, easy_special]
-	#make this basically check if the input attack is in the chars list of canclable attacks

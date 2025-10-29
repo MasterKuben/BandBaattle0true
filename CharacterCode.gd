@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var buffer = $inputBuffer
 @onready var IdleState = $Idle
+@onready var aActive = $AttackAct
 @onready var aStartState = $AttackStart
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
 @export var entType:String = "player%s"% [playerIndex]
@@ -11,6 +12,7 @@ extends CharacterBody2D
 var CurrentState = "Idle"
 var atk
 var hit = false
+var charName = "TestMan"#fix this at some point so it actually gets the characters name
 
 func _physics_process(delta: float) -> void:
 	var moving_right = Input.is_action_pressed("right%s" % [playerIndex])
@@ -34,11 +36,21 @@ func _physics_process(delta: float) -> void:
 			"Crouch":
 				pass
 			"AttackStart":
+				#write this to read inputs that happen during this part
 				CurrentState = aStartState.checkAnim(atk, startup, active)
+				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				buffer.inputGrab(inputValue[1])
 				if CurrentState == "AttackStart":
 					$AnimationPlayer.play(atk)
 			"AttackAct":
-				print("WWWWWWWWWWWWWWWWWWWWWWWWWWWWW")
+				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				buffer.inputGrab(inputValue[1])
+				atk = inputValue[1]
+				var newAtk = getSpecial(atk)
+				var Statenmove = aActive.checkAnimation(atk, cancelWin, active, newAtk, charName)
+				CurrentState = Statenmove[0]
+				atk = Statenmove[1]
+				
 			"AttackRec":
 				pass
 			"Hitstun":

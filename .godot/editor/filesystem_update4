@@ -7,3 +7,5 @@ res://CharacterCode.gd
 res://AttackStart.gd
 res://AttackAct.gd
 res://cancelCheck.gd
+res://Assets/CharData/Char_Damage_Stun.json
+res://getGeneralInputs.gd
