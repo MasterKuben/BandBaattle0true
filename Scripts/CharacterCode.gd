@@ -4,11 +4,15 @@ extends CharacterBody2D
 @onready var IdleState = $Idle
 @onready var aActive = $AttackAct
 @onready var aStartState = $AttackStart
+@onready var aRec = $AttackRec
+
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
 @export var entType:String = "player%s"% [playerIndex]
 @export var cancelWin = false
 @export var startup = false
 @export var active = false
+@export var recovery = false
+
 var CurrentState = "Idle"
 var atk
 var hit = false
@@ -50,9 +54,14 @@ func _physics_process(delta: float) -> void:
 				var Statenmove = aActive.checkAnimation(atk, cancelWin, active, newAtk, charName)
 				CurrentState = Statenmove[0]
 				atk = Statenmove[1]
-				
 			"AttackRec":
-				pass
+				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				buffer.inputGrab(inputValue[1])
+				atk = inputValue[1]
+				var newAtk = getSpecial(atk)
+				var Statenmove = aRec.Recovery(atk, cancelWin, recovery, newAtk, charName, moving_down)
+				CurrentState = Statenmove[0]
+				atk = Statenmove[1]
 			"Hitstun":
 				pass
 			"Forward":

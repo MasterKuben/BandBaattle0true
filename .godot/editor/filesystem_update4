@@ -9,3 +9,6 @@ res://AttackAct.gd
 res://cancelCheck.gd
 res://Assets/CharData/Char_Damage_Stun.json
 res://getGeneralInputs.gd
+res://Scripts/idle.gd
+res://Scripts/CharacterCode.gd
+res://AttackRec.gd

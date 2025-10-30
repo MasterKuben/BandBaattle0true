@@ -1,19 +1,18 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1761467557
-CharacterCode.gd::GDScript::6874610319861821376::1761419495::0::1::::<>CharacterBody2D<><>0<>0<><>::
-character_states.tscn::PackedScene::5846344486460175347::1761419495::0::1::::<><><>0<>0<><>::uid://c47d3exainxnc::::res://CharacterCode.gd<>uid://c2lfsmf1a5s46::::res://idle.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd
+::res://::1761845574
+character_states.tscn::PackedScene::5846344486460175347::1761845574::0::1::::<><><>0<>0<><>::uid://c47d3exainxnc::::res://Scripts/CharacterCode.gd<>uid://c2lfsmf1a5s46::::res://Scripts/idle.gd<>uid://c1hbn875p1mi3::::res://Scripts/AttackStart.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd<>uid://sbjgrc2li6f8::::res://Scripts/AttackAct.gd<>uid://ojbjt4tl8lpx::::res://Scripts/cancelCheck.gd
+getGeneralInputs.gd::GDScript/GDScript::3521290124871174922::1761692768::0::1::::generalInputs<>Node<><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::6544430069784291589::1749397200::1749397329::1::::<><><>0<>0<>cf2a56294194c1280bafa859770fe110<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-idle.gd::GDScript::6690984669348600241::1761467519::0::1::::Idle<>Node2D<><>0<>0<><>::
-README.md::TextFile::-1::1749397200::0::1::::<><><>0<>0<><>::
+README.md::TextFile/TextFile::-1::1749397200::0::1::::<><><>0<>0<><>::
 ::res://Assets/::1757418212
 4bk8jshundl71 (1).png::CompressedTexture2D/CompressedTexture2D::4704583284538919258::1749397200::1749397330::1::::<><><>0<>0<>f21692e5c5e2a78fe99854797a176160<>res://.godot/imported/4bk8jshundl71 (1).png-ef58cefb32cafd5d858c5ef5b652e233.ctex::
-::res://Assets/CharAnims/::1761419487
+::res://Assets/CharAnims/::1761467561
 sprite_sheet (4).png::CompressedTexture2D/CompressedTexture2D::2569913034735122214::1757418212::1761467561::1::::<><><>0<>0<>cf2c3d9be0e0c522c09a41327a6f1470<>res://.godot/imported/sprite_sheet (4).png-c0627aad9e3726f5af2f47554de7e293.ctex::
-::res://Assets/CharData/::1749397241
-Char_Damage_Stun.json::JSON::-1::1749397200::0::1::::<><><>0<>0<><>::
+::res://Assets/CharData/::1761671485
+Char_Damage_Stun.json::JSON/JSON::-1::1761671485::0::1::::<><><>0<>0<><>::
 ::res://Assets/CharSourceAnim/::1759505863
 ::res://Assets/CharSourceAnim/BassFighter/::1757418225
-::res://Assets/CharSourceAnim/BassFighter/RotoScope/::1761419487
+::res://Assets/CharSourceAnim/BassFighter/RotoScope/::1761467561
 Crouch Frame 01.png::CompressedTexture2D/CompressedTexture2D::5869304974325288548::1757418212::1761467560::1::::<><><>0<>0<>ef8799ae00c4809eff60e4f1e58f316f<>res://.godot/imported/Crouch Frame 01.png-2d765e664b1903b22b62b7aa5282761e.ctex::
 Crouch Frame 02.png::CompressedTexture2D/CompressedTexture2D::2231210776900510695::1757418212::1761467560::1::::<><><>0<>0<>d7b8823542fd963f76f65c6797f3ffe7<>res://.godot/imported/Crouch Frame 02.png-e407dc596adf81ce27bdbb21a491a19a.ctex::
 Empty Frame.png::CompressedTexture2D/CompressedTexture2D::8451760007329007831::1757418212::1761467560::1::::<><><>0<>0<>cd8556bccef4eddd7b75d7adbced7837<>res://.godot/imported/Empty Frame.png-0c9f37cd97ef30293edb7a3e0ee45a23.ctex::
@@ -103,22 +102,27 @@ Walk Frame 03.png::CompressedTexture2D/CompressedTexture2D::8363314715557444969:
 Walk Frame 04.png::CompressedTexture2D/CompressedTexture2D::7266766774287770639::1757418212::1761467560::1::::<><><>0<>0<>f6e6a589285cc2a8a8661f1706a9a4a7<>res://.godot/imported/Walk Frame 04.png-5ea01f5f46d7af6ad4bf6c8b15b00d2c.ctex::
 Walk Frame 05.png::CompressedTexture2D/CompressedTexture2D::7924994567687886983::1757418212::1761467560::1::::<><><>0<>0<>6d8db30563c2cd0f4f6a4d53b6667f76<>res://.godot/imported/Walk Frame 05.png-ca022d815d20a1c3ab6f3c005c0b8491.ctex::
 Walk Frame 06.png::CompressedTexture2D/CompressedTexture2D::6027822359237835185::1757418212::1761467560::1::::<><><>0<>0<>316c764405ba8b5b2c65247ca701961a<>res://.godot/imported/Walk Frame 06.png-35292cf2e2df2988e6faa6b5948ef154.ctex::
-::res://Assets/CharSourceAnim/BassFighter/Source Image/::1761419487
+::res://Assets/CharSourceAnim/BassFighter/Source Image/::1761467560
 Kick 5 Frame 05.png::CompressedTexture2D/CompressedTexture2D::6426825376522342262::1757418213::1761467560::1::::<><><>0<>0<>8f1b88af41be754644708a96a46d5327<>res://.godot/imported/Kick 5 Frame 05.png-febe5d2263ed1c1474fbf6e900d7a8c0.ctex::
 Walk Frame 1.png::CompressedTexture2D/CompressedTexture2D::6214162945250887697::1757418213::1761467560::1::::<><><>0<>0<>1c5da93e418ebfe1b34c3f7e31602ebd<>res://.godot/imported/Walk Frame 1.png-de90ee604eb90a89a0b9b50d49866767.ctex::
-::res://Characters/::1761419495
-bass_fighter.tscn::PackedScene::1875860153562183838::1761419495::0::1::::<><><>0<>0<><>::uid://dchnhipwsuyvp::::res://Scripts/Player.gd<>uid://c1nerifcvgc1k::::res://Scripts/AttackInfo.gd<>uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd<>uid://bcu5deulxa735::::res://Assets/CharAnims/sprite_sheet (4).png<>uid://b8a62gbtxqmes::::res://Assets/4bk8jshundl71 (1).png<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd<>uid://dnh7pj84r3vip::::res://Scripts/StateMachine.gd
-::res://Enemies/::1749398704
-dummy.tscn::PackedScene::8151533911824350896::1749398704::0::1::::<><><>0<>0<><>::uid://b3dpmky87a84r::::res://Scripts/Enemy.gd<>uid://c0if2padvxkdp::::res://icon.svg<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd
-::res://Scripts/::1761419495
-AttackInfo.gd::GDScript::6624861867275266438::1749397200::0::1::::attackInfo<>Node2D<><>0<>0<><>::
-bass_fighter_states.gd::GDScript::2038503238841713731::1749398183::0::1::::<>Node<><>0<>0<><>::
-Enemy.gd::GDScript::4358834187089521167::1749397200::0::1::::<>CharacterBody2D<><>0<>0<><>::
-fight_data.gd::GDScript::3720998752301840960::1749397200::0::1::::<>Node<><>0<>0<><>::
-Hitbox.gd::GDScript::3876317622717260946::1749397200::0::1::::HitBox<>Area2D<><>0<>0<><>::
-HurtBox.gd::GDScript::5839613191918631050::1749397200::0::1::::HurtBox<>Area2D<><>0<>0<><>::
-InBuffer.gd::GDScript::4995218649240716230::1761419495::0::1::::inputBuffer<>Node<><>0<>0<><>::
-Player.gd::GDScript::7314892648480399993::1759505866::0::1::::<>CharacterBody2D<><>0<>0<><>::
-StateMachine.gd::GDScript::8088137918359409987::1759505866::0::1::::uniStateMachine<>Node<><>0<>0<><>::
-::res://TestEnv/::1759505866
-level_z.tscn::PackedScene::8677519012600107284::1759505866::0::1::::<><><>0<>0<><>::uid://1yxe36henl6m::::res://Characters/bass_fighter.tscn<>uid://btaqknrnfggjw::::res://Scripts/fight_data.gd<>uid://doewtp5o5ss61::::res://Enemies/dummy.tscn
+::res://Characters/::1761845540
+bass_fighter.tscn::PackedScene/PackedScene::1875860153562183838::1761845540::0::1::::<><><>0<>0<><>::uid://dchnhipwsuyvp::::res://Scripts/Player.gd<>uid://c1nerifcvgc1k::::res://Scripts/AttackInfo.gd<>uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd<>uid://bcu5deulxa735::::res://Assets/CharAnims/sprite_sheet (4).png<>uid://b8a62gbtxqmes::::res://Assets/4bk8jshundl71 (1).png<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd<>uid://dnh7pj84r3vip::::res://Scripts/StateMachine.gd
+::res://Enemies/::1761845540
+dummy.tscn::PackedScene/PackedScene::8151533911824350896::1761845540::0::1::::<><><>0<>0<><>::uid://b3dpmky87a84r::::res://Scripts/Enemy.gd<>uid://c0if2padvxkdp::::res://icon.svg<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd
+::res://Scripts/::1761845574
+AttackAct.gd::GDScript/GDScript::1266021628165338135::1761697071::0::1::::AttackAct<>Node<><>0<>0<><>::
+AttackInfo.gd::GDScript/GDScript::6624861867275266438::1749397200::0::1::::attackInfo<>Node2D<><>0<>0<><>::
+AttackStart.gd::GDScript/GDScript::6612287662655432540::1761669907::0::1::::AttackStart<>Node<><>0<>0<><>::
+bass_fighter_states.gd::GDScript/GDScript::2038503238841713731::1749398183::0::1::::<>Node<><>0<>0<><>::
+cancelCheck.gd::GDScript/GDScript::1001301043479165721::1761671485::0::1::::cancelCheck<>Node<><>0<>0<><>::
+CharacterCode.gd::GDScript::6874610319861821376::1761836178::0::1::::<>CharacterBody2D<><>0<>0<><>::
+Enemy.gd::GDScript/GDScript::4358834187089521167::1749397200::0::1::::<>CharacterBody2D<><>0<>0<><>::
+fight_data.gd::GDScript/GDScript::3720998752301840960::1749397200::0::1::::<>Node<><>0<>0<><>::
+Hitbox.gd::GDScript/GDScript::3876317622717260946::1749397200::0::1::::HitBox<>Area2D<><>0<>0<><>::
+HurtBox.gd::GDScript/GDScript::5839613191918631050::1749397200::0::1::::HurtBox<>Area2D<><>0<>0<><>::
+idle.gd::GDScript::6690984669348600241::1761468974::0::1::::Idle<>Node2D<><>0<>0<><>::
+InBuffer.gd::GDScript/GDScript::4995218649240716230::1761419495::0::1::::inputBuffer<>Node<><>0<>0<><>::
+Player.gd::GDScript/GDScript::7314892648480399993::1759505866::0::1::::<>CharacterBody2D<><>0<>0<><>::
+StateMachine.gd::GDScript/GDScript::8088137918359409987::1759505866::0::1::::uniStateMachine<>Node<><>0<>0<><>::
+::res://TestEnv/::1761845540
+level_z.tscn::PackedScene/PackedScene::8677519012600107284::1761845540::0::1::::<><><>0<>0<><>::uid://1yxe36henl6m::::res://Characters/bass_fighter.tscn<>uid://btaqknrnfggjw::::res://Scripts/fight_data.gd<>uid://doewtp5o5ss61::::res://Enemies/dummy.tscn
