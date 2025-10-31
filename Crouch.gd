@@ -1,3 +1,3 @@
 class_name Crouch_State
-extends Node
+extends Idle
 #this should inhert everything from idle

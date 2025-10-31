@@ -1,3 +1,4 @@
+Crouch_State
 AttackRec
 cancelCheck
 AttackAct
@@ -12,4 +13,3 @@ CollisionShape2D
 HurtBox
 Area2D
 CollisionPolygon2D
-Sprite2D

@@ -38,7 +38,10 @@ func _physics_process(delta: float) -> void:
 				CurrentState = StateInput[0]
 				print(CurrentState, atk)
 			"Crouch":
-				pass
+				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				buffer.inputGrab(StateInput[1])
+				atk = getSpecial(StateInput[1])
+				CurrentState = StateInput[0]
 			"AttackStart":
 				#write this to read inputs that happen during this part
 				CurrentState = aStartState.checkAnim(atk, startup, active)
@@ -81,6 +84,10 @@ func _physics_process(delta: float) -> void:
 			"Down_Back":
 				pass
 			"Backward":
+				pass
+			"Dash":
+				pass
+			"BackDash":
 				pass
 			"Jump":
 				pass
