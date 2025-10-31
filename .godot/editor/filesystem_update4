@@ -12,3 +12,4 @@ res://getGeneralInputs.gd
 res://Scripts/idle.gd
 res://Scripts/CharacterCode.gd
 res://AttackRec.gd
+res://Crouch.gd
