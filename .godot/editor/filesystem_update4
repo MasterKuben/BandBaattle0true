@@ -1,15 +1,5 @@
+res://character_states.tscn
 res://TestEnv/level_z.tscn
+res://Scripts/CharacterCode.gd
 res://Enemies/dummy.tscn
 res://Characters/bass_fighter.tscn
-res://character_states.tscn
-res://idle.gd
-res://CharacterCode.gd
-res://AttackStart.gd
-res://AttackAct.gd
-res://cancelCheck.gd
-res://Assets/CharData/Char_Damage_Stun.json
-res://getGeneralInputs.gd
-res://Scripts/idle.gd
-res://Scripts/CharacterCode.gd
-res://AttackRec.gd
-res://Crouch.gd

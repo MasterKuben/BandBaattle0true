@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cdfyryw3v0bms" path="res://Scripts/InBuffer.gd" id="2_y0fu3"]
 [ext_resource type="Script" uid="uid://sbjgrc2li6f8" path="res://Scripts/AttackAct.gd" id="5_nhic8"]
 [ext_resource type="Script" uid="uid://ojbjt4tl8lpx" path="res://Scripts/cancelCheck.gd" id="6_3gsgg"]
-[ext_resource type="Script" uid="uid://brhrttg5fbund" path="res://AttackRec.gd" id="7_3gsgg"]
+[ext_resource type="Script" uid="uid://brhrttg5fbund" path="res://Scripts/AttackRec.gd" id="7_3gsgg"]
 
 [sub_resource type="Animation" id="Animation_y0fu3"]
 resource_name = "5P"

@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
 	if hit == false:
 		match CurrentState:
-			"Idle":
+			"Idle", "Forward", "Backward", "Down_Back":
+				#%AnimationPlayer.play(CurrentState)
 				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
 				buffer.inputGrab(StateInput[1])
 				atk = getSpecial(StateInput[1])
@@ -68,6 +69,12 @@ func _physics_process(delta: float) -> void:
 			"Hitstun":
 				pass
 			"Forward":
+				#%AnimationPlayer.play("Forward")
+				#var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				#buffer.inputGrab(StateInput[1])
+				#atk = getSpecial(StateInput[1])
+				#CurrentState = StateInput[0]
+				#print(CurrentState, atk)
 				pass
 			"KnockdownFall":
 				pass
@@ -78,8 +85,6 @@ func _physics_process(delta: float) -> void:
 			"Super":
 				pass
 			"Summon":
-				pass
-			"Forward":
 				pass
 			"Down_Back":
 				pass
