@@ -12,7 +12,7 @@ func IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru
 		elif not (true in attackPuts): #for when movement is done with no attacks
 			if (moving_down && ((moving_right && charX == -1) ||(moving_left && charX == 1))):
 				inputValue = "1"
-				return ["Down_Back","1"]
+				return ["Down_Back","1", 0]
 			elif (moving_down && (moving_right && charX == 1) ||(moving_left && charX == -1)):
 				inputValue = "3"
 				return ["Crouch","3"]

@@ -15,6 +15,7 @@ extends CharacterBody2D
 
 var CurrentState = "Idle"
 var atk
+var speed = 80
 var hit = false
 var charName = "TestMan"#fix this at some point so it actually gets the characters name
 
@@ -70,11 +71,8 @@ func _physics_process(delta: float) -> void:
 				pass
 			"Forward":
 				#%AnimationPlayer.play("Forward")
-				#var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
-				#buffer.inputGrab(StateInput[1])
-				#atk = getSpecial(StateInput[1])
-				#CurrentState = StateInput[0]
-				#print(CurrentState, atk)
+				netural_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				
 				pass
 			"KnockdownFall":
 				pass
@@ -95,6 +93,10 @@ func _physics_process(delta: float) -> void:
 			"BackDash":
 				pass
 			"Jump":
+				pass
+			"Fall":
+				pass
+			"Air_Dash":
 				pass
 			#put all the directional and movement stuff here
 	else:
@@ -118,3 +120,10 @@ func getSpecial(tempatk):
 		return tempatk
 	else:
 		return newAtk
+
+func netural_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer):
+				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				buffer.inputGrab(StateInput[1])
+				atk = getSpecial(StateInput[1])
+				CurrentState = StateInput[0]
+				print(CurrentState, atk)

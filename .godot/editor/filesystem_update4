@@ -1,0 +1,4 @@
+res://character_states.tscn
+res://Scripts/CharacterCode.gd
+res://Scripts/idle.gd
+res://Scripts/Jump.gd

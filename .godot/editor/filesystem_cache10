@@ -4,8 +4,9 @@ character_states.tscn::PackedScene::5846344486460175347::1762515150::0::1::::<><
 Crouch.gd::GDScript::809751104499125870::1761871904::0::1::::Crouch_State<>Idle<><>0<>0<><>::
 icon.svg::CompressedTexture2D/CompressedTexture2D::6544430069784291589::1749397200::1749397329::1::::<><><>0<>0<>cf2a56294194c1280bafa859770fe110<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1749397200::0::1::::<><><>0<>0<><>::
-::res://Assets/::1757418212
+::res://Assets/::1763336760
 4bk8jshundl71 (1).png::CompressedTexture2D/CompressedTexture2D::4704583284538919258::1749397200::1749397330::1::::<><><>0<>0<>f21692e5c5e2a78fe99854797a176160<>res://.godot/imported/4bk8jshundl71 (1).png-ef58cefb32cafd5d858c5ef5b652e233.ctex::
+test_man.png::CompressedTexture2D::3089789073469775647::1763336760::1763336760::1::::<><><>0<>0<>7dae78d12cbd4b0097777fa6f7701d83<>res://.godot/imported/test_man.png-8f7aae9adaf2c1a14fdff1995dd6b5e9.ctex::
 ::res://Assets/CharAnims/::1761467561
 sprite_sheet (4).png::CompressedTexture2D/CompressedTexture2D::2569913034735122214::1757418212::1761467561::1::::<><><>0<>0<>cf2c3d9be0e0c522c09a41327a6f1470<>res://.godot/imported/sprite_sheet (4).png-c0627aad9e3726f5af2f47554de7e293.ctex::
 ::res://Assets/CharData/::1761671485
@@ -109,7 +110,7 @@ Walk Frame 1.png::CompressedTexture2D/CompressedTexture2D::6214162945250887697::
 bass_fighter.tscn::PackedScene::1875860153562183838::1761871916::0::1::::<><><>0<>0<><>::uid://dchnhipwsuyvp::::res://Scripts/Player.gd<>uid://c1nerifcvgc1k::::res://Scripts/AttackInfo.gd<>uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd<>uid://bcu5deulxa735::::res://Assets/CharAnims/sprite_sheet (4).png<>uid://b8a62gbtxqmes::::res://Assets/4bk8jshundl71 (1).png<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd<>uid://dnh7pj84r3vip::::res://Scripts/StateMachine.gd
 ::res://Enemies/::1761871916
 dummy.tscn::PackedScene::8151533911824350896::1761871916::0::1::::<><><>0<>0<><>::uid://b3dpmky87a84r::::res://Scripts/Enemy.gd<>uid://c0if2padvxkdp::::res://icon.svg<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd
-::res://Scripts/::1762515150
+::res://Scripts/::1762866501
 AttackAct.gd::GDScript::1266021628165338135::1761697071::0::1::::AttackAct<>Node<><>0<>0<><>::
 AttackInfo.gd::GDScript::6624861867275266438::1749397200::0::1::::attackInfo<>Node2D<><>0<>0<><>::
 AttackRec.gd::GDScript::3595148797361579429::1762515150::0::1::::AttackRec<>Node<><>0<>0<><>::
@@ -125,6 +126,7 @@ HurtBox.gd::GDScript::5839613191918631050::1749397200::0::1::::HurtBox<>Area2D<>
 idle.gd::GDScript::6690984669348600241::1761845766::0::1::::Idle<>Node2D<><>0<>0<><>::
 InBuffer.gd::GDScript::4995218649240716230::1761419495::0::1::::inputBuffer<>Node<><>0<>0<><>::
 Player.gd::GDScript::7314892648480399993::1759505866::0::1::::<>CharacterBody2D<><>0<>0<><>::
+Jump.gd::GDScript::1359268790503166041::1762866501::0::1::::<>Node<><>0<>0<><>::
 StateMachine.gd::GDScript::8088137918359409987::1759505866::0::1::::uniStateMachine<>Node<><>0<>0<><>::
 ::res://TestEnv/::1761871916
 level_z.tscn::PackedScene::8677519012600107284::1761871916::0::1::::<><><>0<>0<><>::uid://1yxe36henl6m::::res://Characters/bass_fighter.tscn<>uid://btaqknrnfggjw::::res://Scripts/fight_data.gd<>uid://doewtp5o5ss61::::res://Enemies/dummy.tscn

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpkao7dkjfwc6"]
+[gd_scene load_steps=12 format=3 uid="uid://cpkao7dkjfwc6"]
 
 [ext_resource type="Script" uid="uid://c47d3exainxnc" path="res://Scripts/CharacterCode.gd" id="1_kpcjk"]
 [ext_resource type="Script" uid="uid://c2lfsmf1a5s46" path="res://Scripts/idle.gd" id="2_60r2y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://sbjgrc2li6f8" path="res://Scripts/AttackAct.gd" id="5_nhic8"]
 [ext_resource type="Script" uid="uid://ojbjt4tl8lpx" path="res://Scripts/cancelCheck.gd" id="6_3gsgg"]
 [ext_resource type="Script" uid="uid://brhrttg5fbund" path="res://Scripts/AttackRec.gd" id="7_3gsgg"]
+[ext_resource type="Texture2D" uid="uid://bkaym0b6erxr0" path="res://Assets/test_man.png" id="8_son6v"]
 
 [sub_resource type="Animation" id="Animation_y0fu3"]
 resource_name = "5P"
@@ -47,6 +48,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0166667, 0.583333, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 0, 1]
+}
 
 [sub_resource type="Animation" id="Animation_mcea8"]
 length = 0.001
@@ -85,6 +98,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nhic8"]
@@ -126,3 +151,7 @@ metadata/_custom_type_script = "uid://cdfyryw3v0bms"
 [node name="AttackRec" type="Node" parent="TestMan"]
 script = ExtResource("7_3gsgg")
 metadata/_custom_type_script = "uid://brhrttg5fbund"
+
+[node name="Sprite2D" type="Sprite2D" parent="TestMan"]
+texture = ExtResource("8_son6v")
+hframes = 5
