@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cpkao7dkjfwc6"]
+[gd_scene load_steps=15 format=3 uid="uid://cpkao7dkjfwc6"]
 
 [ext_resource type="Script" uid="uid://c47d3exainxnc" path="res://Scripts/CharacterCode.gd" id="1_kpcjk"]
 [ext_resource type="Script" uid="uid://c2lfsmf1a5s46" path="res://Scripts/idle.gd" id="2_60r2y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://ojbjt4tl8lpx" path="res://Scripts/cancelCheck.gd" id="6_3gsgg"]
 [ext_resource type="Script" uid="uid://brhrttg5fbund" path="res://Scripts/AttackRec.gd" id="7_3gsgg"]
 [ext_resource type="Texture2D" uid="uid://bkaym0b6erxr0" path="res://Assets/test_man.png" id="8_son6v"]
+[ext_resource type="Script" uid="uid://dw30xl2s6s81b" path="res://player_replay.gd" id="9_agecc"]
 
 [sub_resource type="Animation" id="Animation_y0fu3"]
 resource_name = "5P"
@@ -225,5 +226,9 @@ metadata/_custom_type_script = "uid://brhrttg5fbund"
 [node name="Sprite2D" type="Sprite2D" parent="TestMan"]
 texture = ExtResource("8_son6v")
 hframes = 5
+
+[node name="replayRecord" type="Node" parent="TestMan"]
+script = ExtResource("9_agecc")
+metadata/_custom_type_script = "uid://dw30xl2s6s81b"
 
 [node name="Camera2D" type="Camera2D" parent="."]

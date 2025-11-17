@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var aStartState = $AttackStart
 @onready var aRec = $AttackRec
 @onready var direction = $Sprite2D.scale.x
+@onready var replay = $replayRecord
 
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
 @export var entType:String = "player%s"% [playerIndex]
@@ -31,6 +32,8 @@ func _physics_process(delta: float) -> void:
 	var kick = Input.is_action_just_pressed("K%s" % [playerIndex])
 	var instru = Input.is_action_just_pressed("I%s" % [playerIndex])
 	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
+	
+	replay.recordStates(CurrentState, atk)
 	if hit == false:
 		match CurrentState:
 			"Idle","Down_Back":
@@ -74,6 +77,9 @@ func _physics_process(delta: float) -> void:
 			"Forward", "Backward":
 				#%AnimationPlayer.play("Forward")
 				neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				var dashGo = replay.DashCheck()
+				if dashGo:
+					CurrentState = "Dash"
 				movemoment()
 				pass
 			"KnockdownFall":
@@ -91,7 +97,11 @@ func _physics_process(delta: float) -> void:
 			"Backward":
 				pass
 			"Dash":
-				pass
+				$AnimationPlayer.play("Dash")
+				if !($AnimationPlayer.is_playing("Dash")):
+					CurrentState = "Idle"
+				else:
+					CurrentState = "Dash"
 			"BackDash":
 				pass
 			"Jump":
@@ -115,6 +125,7 @@ func _physics_process(delta: float) -> void:
 				pass
 			_:#this is default for any other state a player can be hit in.
 				pass
+	replay.recordStates(CurrentState, atk)
 
 func getSpecial(tempatk):
 	var newAtk = buffer.motionGet()
