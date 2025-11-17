@@ -28,16 +28,18 @@ func _physics_process(delta: float) -> void:
 	
 	var punch = Input.is_action_just_pressed("P%s" % [playerIndex])
 	var kick = Input.is_action_just_pressed("K%s" % [playerIndex])
-	var instru = Input.is_action_just_pressed("IS%s" % [playerIndex])
+	var instru = Input.is_action_just_pressed("I%s" % [playerIndex])
 	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
 	if hit == false:
 		match CurrentState:
 			"Idle", "Forward", "Backward", "Down_Back":
-				#%AnimationPlayer.play(CurrentState)
-				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
-				buffer.inputGrab(StateInput[1])
-				atk = getSpecial(StateInput[1])
-				CurrentState = StateInput[0]
+				#$AnimationPlayer.play(CurrentState)
+				$AnimationPlayer.play("Idle")
+				#var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				#buffer.inputGrab(StateInput[1])
+				#atk = getSpecial(StateInput[1])
+				#CurrentState = StateInput[0]
+				neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
 				print(CurrentState, atk)
 			"Crouch":
 				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
@@ -71,7 +73,7 @@ func _physics_process(delta: float) -> void:
 				pass
 			"Forward":
 				#%AnimationPlayer.play("Forward")
-				netural_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
 				
 				pass
 			"KnockdownFall":
@@ -121,9 +123,12 @@ func getSpecial(tempatk):
 	else:
 		return newAtk
 
-func netural_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer):
+func neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer):
 				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
 				buffer.inputGrab(StateInput[1])
 				atk = getSpecial(StateInput[1])
 				CurrentState = StateInput[0]
 				print(CurrentState, atk)
+
+func grabCharData():
+	pass
