@@ -1,3 +1,5 @@
+Node
+Camera2D
 Sprite2D
 Crouch_State
 AttackRec
@@ -8,8 +10,5 @@ AnimationPlayer
 inputBuffer
 CharacterBody2D
 Node2D
-Node
 uniStateMachine
 CollisionShape2D
-HurtBox
-Area2D

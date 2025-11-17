@@ -225,3 +225,5 @@ metadata/_custom_type_script = "uid://brhrttg5fbund"
 [node name="Sprite2D" type="Sprite2D" parent="TestMan"]
 texture = ExtResource("8_son6v")
 hframes = 5
+
+[node name="Camera2D" type="Camera2D" parent="."]

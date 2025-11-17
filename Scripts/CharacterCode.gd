@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var aActive = $AttackAct
 @onready var aStartState = $AttackStart
 @onready var aRec = $AttackRec
+@onready var direction = $Sprite2D.scale.x
 
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
 @export var entType:String = "player%s"% [playerIndex]
@@ -15,7 +16,7 @@ extends CharacterBody2D
 
 var CurrentState = "Idle"
 var atk
-var speed = 80
+var speed = 200
 var hit = false
 var charName = "TestMan"#fix this at some point so it actually gets the characters name
 
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
 	if hit == false:
 		match CurrentState:
-			"Idle", "Forward", "Backward", "Down_Back":
+			"Idle","Down_Back":
 				#$AnimationPlayer.play(CurrentState)
 				$AnimationPlayer.play("Idle")
 				#var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
@@ -40,7 +41,6 @@ func _physics_process(delta: float) -> void:
 				#atk = getSpecial(StateInput[1])
 				#CurrentState = StateInput[0]
 				neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
-				print(CurrentState, atk)
 			"Crouch":
 				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
 				buffer.inputGrab(StateInput[1])
@@ -71,10 +71,10 @@ func _physics_process(delta: float) -> void:
 				atk = Statenmove[1]
 			"Hitstun":
 				pass
-			"Forward":
+			"Forward", "Backward":
 				#%AnimationPlayer.play("Forward")
 				neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
-				
+				movemoment()
 				pass
 			"KnockdownFall":
 				pass
@@ -130,5 +130,16 @@ func neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, i
 				CurrentState = StateInput[0]
 				print(CurrentState, atk)
 
+func movemoment():
+	if direction < 0: # while facing right
+		if CurrentState == "Forward":
+			self.velocity.x = -speed
+			move_and_slide()
+	else:
+		if CurrentState == "Forward":
+			self.velocity.x = speed
+			move_and_slide()
+	
+	pass
 func grabCharData():
 	pass
