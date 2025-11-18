@@ -17,9 +17,14 @@ extends CharacterBody2D
 
 var CurrentState = "Idle"
 var atk
+var dashMod = 8
 var speed = 200
 var hit = false
 var charName = "TestMan"#fix this at some point so it actually gets the characters name
+
+func _ready():
+	$AnimationPlayer.animation_finished.connect(_on_animation_player_animation_finished)
+
 
 func _physics_process(delta: float) -> void:
 	var moving_right = Input.is_action_pressed("right%s" % [playerIndex])
@@ -33,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	var instru = Input.is_action_just_pressed("I%s" % [playerIndex])
 	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
 	
-	replay.recordStates(CurrentState, atk)
+	
 	if hit == false:
 		match CurrentState:
 			"Idle","Down_Back":
@@ -75,7 +80,7 @@ func _physics_process(delta: float) -> void:
 			"Hitstun":
 				pass
 			"Forward", "Backward":
-				#%AnimationPlayer.play("Forward")
+				$AnimationPlayer.play(CurrentState)
 				neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
 				var dashGo = replay.DashCheck()
 				if dashGo:
@@ -97,11 +102,10 @@ func _physics_process(delta: float) -> void:
 			"Backward":
 				pass
 			"Dash":
-				$AnimationPlayer.play("Dash")
-				if !($AnimationPlayer.is_playing("Dash")):
-					CurrentState = "Idle"
-				else:
-					CurrentState = "Dash"
+				#there is something wrong with this state but fix at a later time
+				if $AnimationPlayer.current_animation != "Dash":
+					$AnimationPlayer.play("Dash")
+				movemoment()
 			"BackDash":
 				pass
 			"Jump":
@@ -145,12 +149,21 @@ func movemoment():
 	if direction < 0: # while facing right
 		if CurrentState == "Forward":
 			self.velocity.x = -speed
-			move_and_slide()
+		elif CurrentState == "Dash":
+			self.velocity.x = -speed*dashMod
+		move_and_slide()
 	else:
 		if CurrentState == "Forward":
 			self.velocity.x = speed
-			move_and_slide()
+		elif CurrentState == "Dash":
+			self.velocity.x = speed*dashMod
+		move_and_slide()
 	
 	pass
 func grabCharData():
 	pass
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if CurrentState == "Dash":
+		CurrentState = "Idle"

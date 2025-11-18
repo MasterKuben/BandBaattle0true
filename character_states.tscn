@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cpkao7dkjfwc6"]
+[gd_scene load_steps=16 format=3 uid="uid://cpkao7dkjfwc6"]
 
 [ext_resource type="Script" uid="uid://c47d3exainxnc" path="res://Scripts/CharacterCode.gd" id="1_kpcjk"]
 [ext_resource type="Script" uid="uid://c2lfsmf1a5s46" path="res://Scripts/idle.gd" id="2_60r2y"]
@@ -181,10 +181,28 @@ tracks/3/keys = {
 "values": [2, 0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_kkd1c"]
+resource_name = "Dash"
+length = 0.0833352
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nhic8"]
 _data = {
 &"5P": SubResource("Animation_y0fu3"),
 &"6P": SubResource("Animation_agecc"),
+&"Dash": SubResource("Animation_kkd1c"),
 &"Idle": SubResource("Animation_son6v"),
 &"RESET": SubResource("Animation_mcea8")
 }
@@ -232,3 +250,5 @@ script = ExtResource("9_agecc")
 metadata/_custom_type_script = "uid://dw30xl2s6s81b"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="animation_finished" from="TestMan/AnimationPlayer" to="TestMan" method="_on_animation_player_animation_finished"]
