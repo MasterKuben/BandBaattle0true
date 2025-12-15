@@ -151,12 +151,16 @@ func movemoment():
 			self.velocity.x = -speed
 		elif CurrentState == "Dash":
 			self.velocity.x = -speed*dashMod
+		elif CurrentState == "Backward":
+			self.velocity.x = speed*0.7
 		move_and_slide()
 	else:
 		if CurrentState == "Forward":
 			self.velocity.x = speed
 		elif CurrentState == "Dash":
 			self.velocity.x = speed*dashMod
+		elif CurrentState == "Backward":
+			self.velocity.x = -speed*0.7
 		move_and_slide()
 	
 	pass
