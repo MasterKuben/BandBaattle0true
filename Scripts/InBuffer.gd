@@ -2,7 +2,7 @@ class_name inputBuffer #This script is for making motion inputs in the game
 extends Node
 var lastInputs = ["5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5","5"]#These are the last 20 inputs in the last 20 frames
 @export var motionPut = []
-var motionList = ["623P","623K","623I","623S","236K"]#Make this based on the chars list of inputs that they can have
+var motionList = ["623L","623H","623I","623S","236H"]#Make this based on the chars list of inputs that they can have
 
 
 func motionGet():

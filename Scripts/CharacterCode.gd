@@ -5,9 +5,10 @@ extends CharacterBody2D
 @onready var aActive = $AttackAct
 @onready var aStartState = $AttackStart
 @onready var aRec = $AttackRec
-@onready var direction = $Sprite2D.scale.x
+@onready var direction = 1
 @onready var replay = $replayRecord
 
+@export var flip = false
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
 @export var entType:String = "player%s"% [playerIndex]
 @export var cancelWin = false
@@ -33,8 +34,8 @@ func _physics_process(delta: float) -> void:
 	var jump = Input.is_action_just_pressed("up%s"[playerIndex])
 	var movementInputs = [moving_right, moving_left, moving_down, jump]
 	
-	var punch = Input.is_action_just_pressed("P%s" % [playerIndex])
-	var kick = Input.is_action_just_pressed("K%s" % [playerIndex])
+	var light = Input.is_action_just_pressed("L%s" % [playerIndex])
+	var heavy = Input.is_action_just_pressed("H%s" % [playerIndex])
 	var instru = Input.is_action_just_pressed("I%s" % [playerIndex])
 	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
 	
@@ -44,25 +45,26 @@ func _physics_process(delta: float) -> void:
 			"Idle","Down_Back":
 				#$AnimationPlayer.play(CurrentState)
 				$AnimationPlayer.play("Idle")
-				#var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				#var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer)
 				#buffer.inputGrab(StateInput[1])
 				#atk = getSpecial(StateInput[1])
 				#CurrentState = StateInput[0]
-				neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				neutral_states(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
+				print(direction)
 			"Crouch":
-				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				buffer.inputGrab(StateInput[1])
 				atk = getSpecial(StateInput[1])
 				CurrentState = StateInput[0]
 			"AttackStart":
 				#write this to read inputs that happen during this part
 				CurrentState = aStartState.checkAnim(atk, startup, active)
-				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump,light, heavy, instru, easy_special, buffer, direction)
 				buffer.inputGrab(inputValue[1])
 				if CurrentState == "AttackStart":
 					$AnimationPlayer.play(atk)
 			"AttackAct":
-				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				buffer.inputGrab(inputValue[1])
 				atk = inputValue[1]
 				var newAtk = getSpecial(atk)
@@ -70,7 +72,7 @@ func _physics_process(delta: float) -> void:
 				CurrentState = Statenmove[0]
 				atk = Statenmove[1]
 			"AttackRec":
-				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer)
 				buffer.inputGrab(inputValue[1])
 				atk = inputValue[1]
 				var newAtk = getSpecial(atk)
@@ -79,9 +81,9 @@ func _physics_process(delta: float) -> void:
 				atk = Statenmove[1]
 			"Hitstun":
 				pass
-			"Forward", "Backward":
+			"Forward":
 				$AnimationPlayer.play(CurrentState)
-				neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+				neutral_states(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				var dashGo = replay.DashCheck()
 				if dashGo:
 					CurrentState = "Dash"
@@ -100,19 +102,25 @@ func _physics_process(delta: float) -> void:
 			"Down_Back":
 				pass
 			"Backward":
-				pass
+				if $AnimationPlayer.current_animation != "turnAround":
+					$AnimationPlayer.play("turnAround")
+				if flip == true:
+					FlipSprite()
 			"Dash":
 				#there is something wrong with this state but fix at a later time
 				if $AnimationPlayer.current_animation != "Dash":
 					$AnimationPlayer.play("Dash")
 				movemoment()
-			"BackDash":
-				pass
+			#"BackDash":
+				#pass
 			"Jump":
 				pass
 			"Fall":
 				pass
 			"Air_Dash":
+				pass
+			"Block":
+				#block_meter += -1
 				pass
 			#put all the directional and movement stuff here
 	else:
@@ -123,9 +131,12 @@ func _physics_process(delta: float) -> void:
 				pass
 			"HardKnockdown":
 				pass
-			"Down_Back":
-				pass
-			"Backward":
+			#"Down_Back":
+				#pass
+			#"Backward":
+				#pass
+			"Block":
+				#block_meter += blockdamage
 				pass
 			_:#this is default for any other state a player can be hit in.
 				pass
@@ -138,23 +149,23 @@ func getSpecial(tempatk):
 	else:
 		return newAtk
 
-func neutral_states(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer):
-				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, punch, kick, instru, easy_special, buffer)
+func neutral_states(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction):
+				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				buffer.inputGrab(StateInput[1])
 				atk = getSpecial(StateInput[1])
 				CurrentState = StateInput[0]
 				print(CurrentState, atk)
 
 func movemoment():
-	if direction < 0: # while facing right
+	if true: # while facing right
 		if CurrentState == "Forward":
-			self.velocity.x = -speed
+			self.velocity.x = speed*direction
 		elif CurrentState == "Dash":
-			self.velocity.x = -speed*dashMod
+			self.velocity.x = speed*dashMod*direction
 		elif CurrentState == "Backward":
-			self.velocity.x = speed*0.7
+			self.velocity.x = speed*0.7*direction
 		move_and_slide()
-	else:
+	elif direction == 1:
 		if CurrentState == "Forward":
 			self.velocity.x = speed
 		elif CurrentState == "Dash":
@@ -167,7 +178,12 @@ func movemoment():
 func grabCharData():
 	pass
 
+func FlipSprite():
+	$Sprite2D.scale.x = $Sprite2D.scale.x*-1
+	direction = $Sprite2D.scale.x
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if CurrentState == "Dash":
+		CurrentState = "Idle"
+	elif CurrentState == "Backward":
 		CurrentState = "Idle"

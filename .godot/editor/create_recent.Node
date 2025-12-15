@@ -1,5 +1,5 @@
-replayRecord
 Node
+replayRecord
 Camera2D
 Sprite2D
 Crouch_State
@@ -12,4 +12,3 @@ inputBuffer
 CharacterBody2D
 Node2D
 uniStateMachine
-CollisionShape2D
