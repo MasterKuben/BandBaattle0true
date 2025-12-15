@@ -38,6 +38,7 @@ func _physics_process(delta: float) -> void:
 	var heavy = Input.is_action_just_pressed("H%s" % [playerIndex])
 	var instru = Input.is_action_just_pressed("I%s" % [playerIndex])
 	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
+	var dash = Input.is_action_just_pressed("D%s" % [playerIndex])
 	
 	
 	if hit == false:
@@ -49,22 +50,22 @@ func _physics_process(delta: float) -> void:
 				#buffer.inputGrab(StateInput[1])
 				#atk = getSpecial(StateInput[1])
 				#CurrentState = StateInput[0]
-				neutral_states(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
+				neutral_states(dash,moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				print(direction)
 			"Crouch":
-				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
+				var StateInput = IdleState.IdleState(dash, moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				buffer.inputGrab(StateInput[1])
 				atk = getSpecial(StateInput[1])
 				CurrentState = StateInput[0]
 			"AttackStart":
 				#write this to read inputs that happen during this part
 				CurrentState = aStartState.checkAnim(atk, startup, active)
-				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump,light, heavy, instru, easy_special, buffer, direction)
+				var inputValue = IdleState.IdleState(dash, moving_right, moving_left, moving_down, jump,light, heavy, instru, easy_special, buffer, direction)
 				buffer.inputGrab(inputValue[1])
 				if CurrentState == "AttackStart":
 					$AnimationPlayer.play(atk)
 			"AttackAct":
-				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
+				var inputValue = IdleState.IdleState(dash, moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				buffer.inputGrab(inputValue[1])
 				atk = inputValue[1]
 				var newAtk = getSpecial(atk)
@@ -72,7 +73,7 @@ func _physics_process(delta: float) -> void:
 				CurrentState = Statenmove[0]
 				atk = Statenmove[1]
 			"AttackRec":
-				var inputValue = IdleState.IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer)
+				var inputValue = IdleState.IdleState(dash, moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer)
 				buffer.inputGrab(inputValue[1])
 				atk = inputValue[1]
 				var newAtk = getSpecial(atk)
@@ -83,10 +84,7 @@ func _physics_process(delta: float) -> void:
 				pass
 			"Forward":
 				$AnimationPlayer.play(CurrentState)
-				neutral_states(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
-				var dashGo = replay.DashCheck()
-				if dashGo:
-					CurrentState = "Dash"
+				neutral_states(dash, moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				movemoment()
 				pass
 			"KnockdownFall":
@@ -149,8 +147,8 @@ func getSpecial(tempatk):
 	else:
 		return newAtk
 
-func neutral_states(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction):
-				var StateInput = IdleState.IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
+func neutral_states(dash,moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction):
+				var StateInput = IdleState.IdleState(dash, moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				buffer.inputGrab(StateInput[1])
 				atk = getSpecial(StateInput[1])
 				CurrentState = StateInput[0]

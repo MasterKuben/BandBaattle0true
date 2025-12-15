@@ -1,6 +1,6 @@
 class_name Idle
 extends Node2D
-func IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, charX):
+func IdleState(dash,moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, charX):
 	var allinputs = [moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special]
 	var attackPuts = [light, heavy, instru, easy_special]
 	var mvePuts = [moving_right, moving_left, moving_down, jump]
@@ -8,6 +8,8 @@ func IdleState(moving_right, moving_left, moving_down, jump, light, heavy, instr
 	if moving_down == false ||moving_down:#cahnge this to is on floor and is not on floor 
 		if not (true in allinputs):
 			return ["Idle","5"]
+		elif dash == true:
+			return ["Dash","5"]
 		elif not (true in attackPuts): #for when movement is done with no attacks
 			if (moving_down && ((moving_right && charX == -1) ||(moving_left && charX == 1))):
 				inputValue = "1"
