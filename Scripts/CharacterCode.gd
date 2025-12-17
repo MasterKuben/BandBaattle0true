@@ -10,11 +10,13 @@ extends CharacterBody2D
 
 @export var flip = false
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
-@export var entType:String = "player%s"% [playerIndex]
+@export var entType:String = "player0" #"player%s"% [playerIndex]
 @export var cancelWin = false
 @export var startup = false
 @export var active = false
 @export var recovery = false
+
+
 
 var CurrentState = "Idle"
 var atk
@@ -25,6 +27,7 @@ var charName = "TestMan"#fix this at some point so it actually gets the characte
 
 func _ready():
 	$AnimationPlayer.animation_finished.connect(_on_animation_player_animation_finished)
+	add_to_group("player1hithurt")
 
 
 func _physics_process(delta: float) -> void:
@@ -73,7 +76,7 @@ func _physics_process(delta: float) -> void:
 				CurrentState = Statenmove[0]
 				atk = Statenmove[1]
 			"AttackRec":
-				var inputValue = IdleState.IdleState(dash, moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer)
+				var inputValue = IdleState.IdleState(dash, moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				buffer.inputGrab(inputValue[1])
 				atk = inputValue[1]
 				var newAtk = getSpecial(atk)
@@ -163,22 +166,26 @@ func movemoment():
 		elif CurrentState == "Backward":
 			self.velocity.x = speed*0.7*direction
 		move_and_slide()
-	elif direction == 1:
-		if CurrentState == "Forward":
-			self.velocity.x = speed
-		elif CurrentState == "Dash":
-			self.velocity.x = speed*dashMod
-		elif CurrentState == "Backward":
-			self.velocity.x = -speed*0.7
-		move_and_slide()
+	#elif direction == 1:
+	#	if CurrentState == "Forward":
+	#		self.velocity.x = speed
+	#	elif CurrentState == "Dash":
+	#		self.velocity.x = speed*dashMod
+	#	elif CurrentState == "Backward":
+	#		self.velocity.x = -speed*0.7
+	#	move_and_slide()
 	
 	pass
 func grabCharData():
 	pass
 
 func FlipSprite():
-	$Sprite2D.scale.x = $Sprite2D.scale.x*-1
-	direction = $Sprite2D.scale.x
+	scale.x = direction*-1
+	direction = scale.x
+	flip = false
+	
+func setTeam():
+	pass
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if CurrentState == "Dash":

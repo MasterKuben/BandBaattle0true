@@ -7,6 +7,7 @@ func takeDamage(atkDam) -> void:
 	if health > 0 && atkDam < health:
 		health = health - atkDam
 		print(health)
+		
 	elif health > 0:
 		health = 0
 	elif health <= 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://doewtp5o5ss61"]
+[gd_scene load_steps=9 format=3 uid="uid://doewtp5o5ss61"]
 
 [ext_resource type="Script" uid="uid://b3dpmky87a84r" path="res://Scripts/Enemy.gd" id="1_1p86b"]
 [ext_resource type="Texture2D" uid="uid://c0if2padvxkdp" path="res://icon.svg" id="1_6xd88"]
@@ -10,7 +10,43 @@ size = Vector2(123, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qawet"]
 size = Vector2(127, 124)
 
-[node name="Dummy" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_1p86b"]
+resource_name = "hitconfirm"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qawet"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oq4ip"]
+_data = {
+&"RESET": SubResource("Animation_qawet"),
+&"hitconfirm": SubResource("Animation_1p86b")
+}
+
+[node name="Dummy" type="CharacterBody2D" groups=["enemyhithurt"]]
 script = ExtResource("1_1p86b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -31,3 +67,8 @@ metadata/_custom_type_script = "uid://cpg0tt70pxbb3"
 visible = false
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_qawet")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_oq4ip")
+}

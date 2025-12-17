@@ -2,12 +2,14 @@ class_name HurtBox
 extends Area2D
 
 func setColl() -> void:
-	if owner.entType == "enemy":
-		collision_layer = 0
-		collision_mask = 2
-	elif owner.entType == "player0":
-		collision_layer = 128
-		collision_mask = 4
+	if owner.is_in_group("enemy"):
+		collision_layer = 0 #layer for hurtbox
+		collision_mask = 2 #layer to dectet hitbox
+	elif owner.is_in_group("player1hithurt"):
+		collision_layer = 128#these are the layers for the hurtbox
+		collision_mask = 4#this is the layer a hurtbox to be detected
+		print("2")
+		print("a")
 
 func _ready() -> void:
 	setColl()

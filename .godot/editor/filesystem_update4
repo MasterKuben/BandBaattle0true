@@ -7,3 +7,9 @@ res://Scripts/CharacterCode.gd
 res://Scripts/idle.gd
 res://Scripts/InBuffer.gd
 res://backward.gd
+res://hurtbox.tscn
+res://Assets/CharData/Char_Damage_Stun.json
+res://Scripts/Hitbox.gd
+res://hitbox.tscn
+res://Scripts/HurtBox.gd
+res://Scripts/Enemy.gd
