@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [global_group]
 
-player1hithurt="All players in the first group"
 player2hithurt=""
 enemyhithurt=""
+player1hithurt="All players in the first group"
 
 [input]
 

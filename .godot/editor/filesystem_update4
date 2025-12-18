@@ -13,3 +13,5 @@ res://Scripts/Hitbox.gd
 res://hitbox.tscn
 res://Scripts/HurtBox.gd
 res://Scripts/Enemy.gd
+res://healthbar.gd
+res://healthbar.tscn

@@ -1,3 +1,5 @@
+Timer
+ProgressBar
 AnimationPlayer
 CollisionShape2D
 HitBox
@@ -11,4 +13,3 @@ Crouch_State
 AttackRec
 cancelCheck
 AttackAct
-AttackStart

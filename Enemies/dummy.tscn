@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://doewtp5o5ss61"]
+[gd_scene load_steps=10 format=3 uid="uid://doewtp5o5ss61"]
 
 [ext_resource type="Script" uid="uid://b3dpmky87a84r" path="res://Scripts/Enemy.gd" id="1_1p86b"]
 [ext_resource type="Texture2D" uid="uid://c0if2padvxkdp" path="res://icon.svg" id="1_6xd88"]
 [ext_resource type="Script" uid="uid://cpg0tt70pxbb3" path="res://Scripts/HurtBox.gd" id="2_x7prq"]
+[ext_resource type="PackedScene" uid="uid://x6kru3dnu02r" path="res://healthbar.tscn" id="4_qawet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p86b"]
 size = Vector2(123, 72)
@@ -67,6 +68,14 @@ metadata/_custom_type_script = "uid://cpg0tt70pxbb3"
 visible = false
 position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_qawet")
+
+[node name="healthbar" parent="." instance=ExtResource("4_qawet")]
+offset_left = -81.0
+offset_top = -91.0
+offset_right = 159.0
+offset_bottom = -87.0
+scale = Vector2(0.647443, 1.86553)
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

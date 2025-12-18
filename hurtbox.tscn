@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://cpg0tt70pxbb3" path="res://Scripts/HurtBox.gd" id="1_id7pq"]
 
-[node name="HurtBox" type="Area2D"]
+[node name="HurtBox" type="Area2D" groups=["player1"]]
 script = ExtResource("1_id7pq")

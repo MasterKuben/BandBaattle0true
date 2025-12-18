@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cpkao7dkjfwc6"]
+[gd_scene load_steps=23 format=3 uid="uid://cpkao7dkjfwc6"]
 
 [ext_resource type="Script" uid="uid://c47d3exainxnc" path="res://Scripts/CharacterCode.gd" id="1_kpcjk"]
 [ext_resource type="Script" uid="uid://c2lfsmf1a5s46" path="res://Scripts/idle.gd" id="2_60r2y"]
+[ext_resource type="PackedScene" uid="uid://x6kru3dnu02r" path="res://healthbar.tscn" id="2_akxes"]
 [ext_resource type="Script" uid="uid://c1hbn875p1mi3" path="res://Scripts/AttackStart.gd" id="2_mcea8"]
 [ext_resource type="Script" uid="uid://cdfyryw3v0bms" path="res://Scripts/InBuffer.gd" id="2_y0fu3"]
 [ext_resource type="Script" uid="uid://sbjgrc2li6f8" path="res://Scripts/AttackAct.gd" id="5_nhic8"]
@@ -263,6 +264,8 @@ size = Vector2(0.2677, 54.1768)
 [node name="TestMan" type="CharacterBody2D" parent="."]
 script = ExtResource("1_kpcjk")
 flip = true
+
+[node name="health" parent="TestMan" instance=ExtResource("2_akxes")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TestMan"]
 libraries = {

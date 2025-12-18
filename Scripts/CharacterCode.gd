@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var aRec = $AttackRec
 @onready var direction = 1
 @onready var replay = $replayRecord
-@onready var health = 1000
+@onready var healthbar = $healthbar
 
 @export var flip = false
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
@@ -17,7 +17,7 @@ extends CharacterBody2D
 @export var active = false
 @export var recovery = false
 
-
+var health
 var previous_state := ""
 var CurrentState = "Idle"
 var atk
@@ -26,9 +26,11 @@ var speed = 200
 var hit = false
 var charName = "TestMan"#fix this at some point so it actually gets the characters name
 
-func _ready():
+func _ready() -> void:
+	health =  1000#this should be collected using character data
 	$AnimationPlayer.animation_finished.connect(_on_animation_player_animation_finished)
 	add_to_group("player1hithurt")
+	healthbar._init_health(health)
 
 
 func _physics_process(delta: float) -> void:
@@ -223,6 +225,7 @@ func takeDamage(atkDam) -> void:#this is called by the hurtbox node when damage 
 		health = 0
 	elif health <= 0:
 		print("Already dead")
+	healthbar.health = health
 
 func disable_Hitboxes() -> void:
 	#Ill write something when Im back on this
