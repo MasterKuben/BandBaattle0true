@@ -120,35 +120,11 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:flip")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_3h5sg"]
 resource_name = "turnAround"
 length = 0.116669
 step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:flip")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_y0fu3"]
 resource_name = "5L"
@@ -286,6 +262,7 @@ size = Vector2(0.2677, 54.1768)
 
 [node name="TestMan" type="CharacterBody2D" parent="."]
 script = ExtResource("1_kpcjk")
+flip = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TestMan"]
 libraries = {

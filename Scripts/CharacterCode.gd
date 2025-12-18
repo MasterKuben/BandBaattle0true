@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var aRec = $AttackRec
 @onready var direction = 1
 @onready var replay = $replayRecord
+@onready var health = 1000
 
 @export var flip = false
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
@@ -17,7 +18,7 @@ extends CharacterBody2D
 @export var recovery = false
 
 
-
+var previous_state := ""
 var CurrentState = "Idle"
 var atk
 var dashMod = 8
@@ -31,6 +32,11 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	
+	#if CurrentState != previous_state:
+		#on_state_enter(CurrentState)
+		#previous_state = CurrentState
+	
 	var moving_right = Input.is_action_pressed("right%s" % [playerIndex])
 	var moving_left = Input.is_action_pressed("left%s" % [playerIndex])
 	var moving_down = Input.is_action_pressed("down%s" % [playerIndex])
@@ -88,7 +94,7 @@ func _physics_process(delta: float) -> void:
 			"Forward":
 				$AnimationPlayer.play(CurrentState)
 				neutral_states(dash, moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
-				movemoment()
+				movemoment(moving_left, moving_right)
 				pass
 			"KnockdownFall":
 				pass
@@ -102,16 +108,17 @@ func _physics_process(delta: float) -> void:
 				pass
 			"Down_Back":
 				pass
-			"Backward":
+			"Turn":
 				if $AnimationPlayer.current_animation != "turnAround":
 					$AnimationPlayer.play("turnAround")
-				if flip == true:
-					FlipSprite()
+					direction *= -1
+					apply_scale(Vector2(-1,1))  # flip relative to current orientation
+					movemoment(moving_left, moving_right)
 			"Dash":
 				#there is something wrong with this state but fix at a later time
 				if $AnimationPlayer.current_animation != "Dash":
 					$AnimationPlayer.play("Dash")
-				movemoment()
+				movemoment(moving_left, moving_right)
 			#"BackDash":
 				#pass
 			"Jump":
@@ -122,6 +129,8 @@ func _physics_process(delta: float) -> void:
 				pass
 			"Block":
 				#block_meter += -1
+				pass
+			"BlockStun":
 				pass
 			#put all the directional and movement stuff here
 	else:
@@ -138,9 +147,13 @@ func _physics_process(delta: float) -> void:
 				#pass
 			"Block":
 				#block_meter += blockdamage
+				
+				pass
+			"BlockStun":
 				pass
 			_:#this is default for any other state a player can be hit in.
 				pass
+	#flipChar(moving_right, moving_left)
 	replay.recordStates(CurrentState, atk)
 
 func getSpecial(tempatk):
@@ -157,7 +170,7 @@ func neutral_states(dash,moving_right, moving_left, moving_down, jump, light, he
 				CurrentState = StateInput[0]
 				print(CurrentState, atk)
 
-func movemoment():
+func movemoment(moving_left, moving_right):
 	if true: # while facing right
 		if CurrentState == "Forward":
 			self.velocity.x = speed*direction
@@ -165,6 +178,13 @@ func movemoment():
 			self.velocity.x = speed*dashMod*direction
 		elif CurrentState == "Backward":
 			self.velocity.x = speed*0.7*direction
+			#if moving_left:
+			#	self.scale.x = -1
+			#	direction = -1
+			#elif moving_right:
+			#	self.scale.x = 1
+			#	direction = 1
+			
 		move_and_slide()
 	#elif direction == 1:
 	#	if CurrentState == "Forward":
@@ -179,10 +199,27 @@ func movemoment():
 func grabCharData():
 	pass
 
-func FlipSprite():
-	scale.x = direction*-1
-	direction = scale.x
-	flip = false
+#func FlipSprite():
+	#scale.x = direction*-1
+	#direction = scale.x
+	#flip = false
+	
+func takeDamage(atkDam) -> void:#this is called by the hurtbox node when damage needs to be applied to character
+	if health > 0 && atkDam < health:
+		if CurrentState == "Block":
+			health = health - atkDam*0.2
+		else:
+			health = health - atkDam
+		print(health)
+		
+	elif health > 0:
+		health = 0
+	elif health <= 0:
+		print("Already dead")
+
+func disable_Hitboxes() -> void:
+	#Ill write something when Im back on this
+	pass
 	
 func setTeam():
 	pass
@@ -190,5 +227,21 @@ func setTeam():
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if CurrentState == "Dash":
 		CurrentState = "Idle"
-	elif CurrentState == "Backward":
+	elif CurrentState == "Turn" && anim_name == "turnAround":
 		CurrentState = "Idle"
+		
+func on_state_enter(state):
+	if state == "Turn":
+		pass
+		direction *= -1
+		apply_scale(Vector2(-1,1))  # flip relative to current orientation
+
+
+#func flipChar(moving_right, moving_left):
+#	if moving_right:
+#		scale.x = 1
+#		direction = 1
+#	elif moving_left:
+#		$Sprite2D.flip_h = true
+#		$HurtBox.scale.x = -1
+#		direction = -1

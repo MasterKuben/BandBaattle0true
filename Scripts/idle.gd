@@ -24,7 +24,8 @@ func IdleState(dash,moving_right, moving_left, moving_down, jump, light, heavy, 
 				return ["Forward","6"]
 			elif (moving_right && charX == -1) ||(moving_left && charX == 1):
 				inputValue = "4"
-				return ["Backward", "4"]
+				return ["Turn", "4"]
+				#this was commented due to trouble of getting the flip to work
 			elif moving_down:
 				inputValue = "2"
 				return ["Crouch","2"]
@@ -72,4 +73,4 @@ func IdleState(dash,moving_right, moving_left, moving_down, jump, light, heavy, 
 					inputValue = "4S"
 				return ["AttackStart", inputValue]
 	else:
-		pass
+		return ["Idle", "5"]
