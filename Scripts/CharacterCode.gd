@@ -132,6 +132,11 @@ func _physics_process(delta: float) -> void:
 				pass
 			"BlockStun":
 				pass
+			"Grab":
+				pass
+			"GrabStun":
+				$AnimationPlayer.play("GrabStun")
+				pass
 			#put all the directional and movement stuff here
 	else:
 		match CurrentState:
@@ -145,6 +150,8 @@ func _physics_process(delta: float) -> void:
 				#pass
 			#"Backward":
 				#pass
+			"Hitstun":
+				var ranHit = randi_range(1,5)#this will choose one of 5 random frames for a hit on a character
 			"Block":
 				#block_meter += blockdamage
 				
