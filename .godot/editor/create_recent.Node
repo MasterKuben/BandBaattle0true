@@ -1,4 +1,6 @@
 Timer
+CanvasLayer
+Camera2D
 ProgressBar
 AnimationPlayer
 CollisionShape2D
@@ -7,9 +9,6 @@ Area2D
 Node2D
 Node
 replayRecord
-Camera2D
 Sprite2D
 Crouch_State
 AttackRec
-cancelCheck
-AttackAct

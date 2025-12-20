@@ -19,3 +19,9 @@ func attackDam(charName, atkName):
 	var sheet = atkData["Damage"]
 	var atkDict = sheet[charName]
 	return atkDict[atkName]
+
+func attackStun(charName, atkName):
+	var atkData = load_json_file()
+	var sheet = atkData["Stun"]
+	var atkDict = sheet[charName]
+	return atkDict[atkName]

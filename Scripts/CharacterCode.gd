@@ -7,7 +7,8 @@ extends CharacterBody2D
 @onready var aRec = $AttackRec
 @onready var direction = 1
 @onready var replay = $replayRecord
-@onready var healthbar = $healthbar
+@onready var healthbar = $health
+@onready var hitStunTimer = $HitStunTimer
 
 @export var flip = false
 @export var playerIndex: int = 0 #set this when character is made when they are selected by player 1 or 2
@@ -16,8 +17,8 @@ extends CharacterBody2D
 @export var startup = false
 @export var active = false
 @export var recovery = false
+@export var health = 1000
 
-var health
 var previous_state := ""
 var CurrentState = "Idle"
 var atk
@@ -30,7 +31,11 @@ func _ready() -> void:
 	health =  1000#this should be collected using character data
 	$AnimationPlayer.animation_finished.connect(_on_animation_player_animation_finished)
 	add_to_group("player1hithurt")
-	healthbar._init_health(health)
+	print("Healthbar:", healthbar)
+	if is_instance_valid(healthbar):
+		healthbar.init_health(health)
+	else:
+		push_error("Healthbar is null!")
 
 
 func _physics_process(delta: float) -> void:
@@ -154,6 +159,9 @@ func _physics_process(delta: float) -> void:
 				#pass
 			"Hitstun":
 				var ranHit = randi_range(1,5)#this will choose one of 5 random frames for a hit on a character
+				if $AnimationPlayer.current_animation != "HitStun%s"%[ranHit]:
+					$AnimationPlayer.play("HitStun%s"%[ranHit])
+					hitStunTimer.start()
 			"Block":
 				#block_meter += blockdamage
 				
@@ -213,12 +221,14 @@ func grabCharData():
 	#direction = scale.x
 	#flip = false
 	
-func takeDamage(atkDam) -> void:#this is called by the hurtbox node when damage needs to be applied to character
+func takeDamage(atkDam, stunFrames) -> void:#this is called by the hurtbox node when damage needs to be applied to character
 	if health > 0 && atkDam < health:
 		if CurrentState == "Block":
 			health = health - atkDam*0.2
 		else:
 			health = health - atkDam
+			var stunTime = stunFrames/60
+			hitStunTimer.set_wait_time(stunTime)
 		print(health)
 		
 	elif health > 0:
@@ -246,7 +256,6 @@ func on_state_enter(state):
 		direction *= -1
 		apply_scale(Vector2(-1,1))  # flip relative to current orientation
 
-
 #func flipChar(moving_right, moving_left):
 #	if moving_right:
 #		scale.x = 1
@@ -255,3 +264,7 @@ func on_state_enter(state):
 #		$Sprite2D.flip_h = true
 #		$HurtBox.scale.x = -1
 #		direction = -1
+
+
+func _on_hit_stun_timer_timeout() -> void:
+	CurrentState ="Idle" #add statement for air too

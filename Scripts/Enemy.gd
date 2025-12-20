@@ -6,11 +6,13 @@ var health
 
 func _ready() -> void:
 	health = 1000
-	healthbar._init_health(health)
+	healthbar.init_health(health)
 
-func takeDamage(atkDam) -> void:
+func takeDamage(atkDam, atkStun) -> void:
 	if health > 0 && atkDam < health:
 		health = health - atkDam
+		if atkStun <= 2:
+			$AnimationPlayer.play("HitStun")#this just checks if hitstun is correctly recieved
 		print(health)
 	
 	elif health > 0:

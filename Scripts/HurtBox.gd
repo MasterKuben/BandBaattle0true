@@ -22,4 +22,4 @@ func _on_area_entered(hitbox: HitBox) -> void:
 		print("hit")
 		print(hitbox.damage)
 	if owner.has_method("takeDamage"):
-		owner.takeDamage(hitbox.damage)
+		owner.takeDamage(hitbox.damage, hitbox.stun)

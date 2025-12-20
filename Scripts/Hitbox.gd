@@ -2,6 +2,7 @@ class_name HitBox
 extends Area2D
 
 @export var damage: int = 0
+@export var stun: int = 0
 @onready var character := get_parent().get_parent()
 
 func setColl() -> void:
@@ -20,5 +21,6 @@ func _ready() -> void:
 	var atkName = self.name
 	var atk = attackInfo.new()
 	damage = atk.attackDam(charName, atkName)
+	stun = atk.attackStun(charName, atkName)
 	print(atkName)
 	print(damage)
