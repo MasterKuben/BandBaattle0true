@@ -103,9 +103,9 @@ func _physics_process(delta: float) -> void:
 				neutral_states(dash, moving_right, moving_left, moving_down, jump, light, heavy, instru, easy_special, buffer, direction)
 				movemoment(moving_left, moving_right)
 				pass
-			"KnockdownFall":
-				pass
-			"Knockdown":
+			"KnockdownFall":#this is as the player is falling
+				$AnimationPlayer.play(CurrentState)
+			"Knockdown":#this is when they are on the ground, player gets up when button is hit
 				pass
 			"HardKnockdown":
 				pass
@@ -170,6 +170,7 @@ func _physics_process(delta: float) -> void:
 				pass
 			_:#this is default for any other state a player can be hit in.
 				pass
+		hit = false
 	#flipChar(moving_right, moving_left)
 	replay.recordStates(CurrentState, atk)
 
@@ -225,10 +226,10 @@ func takeDamage(atkDam, stunFrames) -> void:#this is called by the hurtbox node 
 	if health > 0 && atkDam < health:
 		if CurrentState == "Block":
 			health = health - atkDam*0.2
+			stunTime(stunFrames)
 		else:
 			health = health - atkDam
-			var stunTime = stunFrames/60
-			hitStunTimer.set_wait_time(stunTime)
+			stunTime(stunFrames)
 		print(health)
 		
 	elif health > 0:
@@ -236,6 +237,7 @@ func takeDamage(atkDam, stunFrames) -> void:#this is called by the hurtbox node 
 	elif health <= 0:
 		print("Already dead")
 	healthbar.health = health
+	hit = true
 
 func disable_Hitboxes() -> void:
 	#Ill write something when Im back on this
@@ -249,6 +251,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		CurrentState = "Idle"
 	elif CurrentState == "Turn" && anim_name == "turnAround":
 		CurrentState = "Idle"
+	elif CurrentState == "KnockdownFall":
+		CurrentState = "Knockdown";
+	
 		
 func on_state_enter(state):
 	if state == "Turn":
@@ -265,6 +270,13 @@ func on_state_enter(state):
 #		$HurtBox.scale.x = -1
 #		direction = -1
 
+func stunTime(stunFrames):#this is to set the hit/blockstun time
+	var stunTime = stunFrames/60
+	hitStunTimer.set_wait_time(stunTime)
+	
+func putInKnockdown():#this checks if they player should be put in a lnockdown state.
+	pass
 
 func _on_hit_stun_timer_timeout() -> void:
+	
 	CurrentState ="Idle" #add statement for air too

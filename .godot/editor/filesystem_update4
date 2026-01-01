@@ -1,17 +1,2 @@
-res://TestEnv/level_z.tscn
-res://Enemies/dummy.tscn
-res://Characters/bass_fighter.tscn
 res://character_states.tscn
-res://player_replay.tscn
-res://hitbox.tscn
-res://hurtbox.tscn
-res://healthbar.tscn
 res://Scripts/CharacterCode.gd
-res://healthbar.gd
-res://Scripts/Enemy.gd
-res://Scripts/fight_data.gd
-res://TestEnv/ui_canvas_layer.gd
-res://Scripts/AttackInfo.gd
-res://Assets/CharData/Char_Damage_Stun.json
-res://Scripts/Hitbox.gd
-res://Scripts/HurtBox.gd

@@ -1,23 +1,23 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1766164334
-backward.gd::GDScript::3055935895885612218::1765836558::0::1::::<>Node<><>0<>0<><>::
-character_states.tscn::PackedScene::5846344486460175347::1766102271::0::1::::<><><>0<>0<><>::uid://c47d3exainxnc::::res://Scripts/CharacterCode.gd<>uid://c2lfsmf1a5s46::::res://Scripts/idle.gd<>uid://x6kru3dnu02r::::res://healthbar.tscn<>uid://c1hbn875p1mi3::::res://Scripts/AttackStart.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd<>uid://sbjgrc2li6f8::::res://Scripts/AttackAct.gd<>uid://ojbjt4tl8lpx::::res://Scripts/cancelCheck.gd<>uid://brhrttg5fbund::::res://Scripts/AttackRec.gd<>uid://bkaym0b6erxr0::::res://Assets/test_man.png<>uid://dw30xl2s6s81b::::res://player_replay.gd<>uid://bjsk22j7t1gog::::res://backward.gd<>uid://b4bldlrvyoa1s::::res://hurtbox.tscn<>uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd
+::res://::1767130695
+backward.gd::GDScript/GDScript::3055935895885612218::1765836558::0::1::::<>Node<><>0<>0<><>::
+character_states.tscn::PackedScene::5846344486460175347::1766361855::0::1::::<><><>0<>0<><>::uid://c47d3exainxnc::::res://Scripts/CharacterCode.gd<>uid://c2lfsmf1a5s46::::res://Scripts/idle.gd<>uid://x6kru3dnu02r::::res://healthbar.tscn<>uid://c1hbn875p1mi3::::res://Scripts/AttackStart.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd<>uid://sbjgrc2li6f8::::res://Scripts/AttackAct.gd<>uid://ojbjt4tl8lpx::::res://Scripts/cancelCheck.gd<>uid://brhrttg5fbund::::res://Scripts/AttackRec.gd<>uid://bkaym0b6erxr0::::res://Assets/test_man.png<>uid://dw30xl2s6s81b::::res://player_replay.gd<>uid://bjsk22j7t1gog::::res://backward.gd<>uid://b4bldlrvyoa1s::::res://hurtbox.tscn<>uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd
 Crouch.gd::GDScript/GDScript::809751104499125870::1761871904::0::1::::Crouch_State<>Idle<><>0<>0<><>::
-healthbar.gd::GDScript::7163150334842304013::1766101691::0::1::::<>ProgressBar<><>0<>0<><>::
-healthbar.tscn::PackedScene::1678977736350666843::1766102271::0::1::::<><><>0<>0<><>::uid://dab5blvfflf4x::::res://healthbar.gd
-hitbox.tscn::PackedScene::5194120177121866384::1766102271::0::1::::<><><>0<>0<><>::uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd
-hurtbox.tscn::PackedScene::4424635376257539542::1766102271::0::1::::<><><>0<>0<><>::uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd
+healthbar.gd::GDScript/GDScript::7163150334842304013::1766165824::0::1::::<>ProgressBar<><>0<>0<><>::
+healthbar.tscn::PackedScene::1678977736350666843::1766344116::0::1::::<><><>0<>0<><>::uid://dab5blvfflf4x::::res://healthbar.gd
+hitbox.tscn::PackedScene::5194120177121866384::1766344116::0::1::::<><><>0<>0<><>::uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd
+hurtbox.tscn::PackedScene::4424635376257539542::1766344116::0::1::::<><><>0<>0<><>::uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd
 icon.svg::CompressedTexture2D/CompressedTexture2D::6544430069784291589::1749397200::1749397329::1::::<><><>0<>0<>cf2a56294194c1280bafa859770fe110<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 player_replay.gd::GDScript/GDScript::8762778806635244921::1763424398::0::1::::replayRecord<>Node<><>0<>0<><>::
-player_replay.tscn::PackedScene::1240317778855373574::1766102271::0::1::::<><><>0<>0<><>::uid://dw30xl2s6s81b::::res://player_replay.gd
+player_replay.tscn::PackedScene::1240317778855373574::1766344116::0::1::::<><><>0<>0<><>::uid://dw30xl2s6s81b::::res://player_replay.gd
 README.md::TextFile/TextFile::-1::1749397200::0::1::::<><><>0<>0<><>::
 ::res://Assets/::1763336760
 4bk8jshundl71 (1).png::CompressedTexture2D/CompressedTexture2D::4704583284538919258::1749397200::1749397330::1::::<><><>0<>0<>f21692e5c5e2a78fe99854797a176160<>res://.godot/imported/4bk8jshundl71 (1).png-ef58cefb32cafd5d858c5ef5b652e233.ctex::
 test_man.png::CompressedTexture2D/CompressedTexture2D::3089789073469775647::1763336760::1763336760::1::::<><><>0<>0<>7dae78d12cbd4b0097777fa6f7701d83<>res://.godot/imported/test_man.png-8f7aae9adaf2c1a14fdff1995dd6b5e9.ctex::
 ::res://Assets/CharAnims/::1761467561
 sprite_sheet (4).png::CompressedTexture2D/CompressedTexture2D::2569913034735122214::1757418212::1761467561::1::::<><><>0<>0<>cf2c3d9be0e0c522c09a41327a6f1470<>res://.godot/imported/sprite_sheet (4).png-c0627aad9e3726f5af2f47554de7e293.ctex::
-::res://Assets/CharData/::1766006268
-Char_Damage_Stun.json::JSON::-1::1766006268::0::1::::<><><>0<>0<><>::
+::res://Assets/CharData/::1766189166
+Char_Damage_Stun.json::JSON/JSON::-1::1766189166::0::1::::<><><>0<>0<><>::
 ::res://Assets/CharSourceAnim/::1759505863
 ::res://Assets/CharSourceAnim/BassFighter/::1757418225
 ::res://Assets/CharSourceAnim/BassFighter/RotoScope/::1761467561
@@ -113,27 +113,28 @@ Walk Frame 06.png::CompressedTexture2D/CompressedTexture2D::6027822359237835185:
 ::res://Assets/CharSourceAnim/BassFighter/Source Image/::1761467560
 Kick 5 Frame 05.png::CompressedTexture2D/CompressedTexture2D::6426825376522342262::1757418213::1761467560::1::::<><><>0<>0<>8f1b88af41be754644708a96a46d5327<>res://.godot/imported/Kick 5 Frame 05.png-febe5d2263ed1c1474fbf6e900d7a8c0.ctex::
 Walk Frame 1.png::CompressedTexture2D/CompressedTexture2D::6214162945250887697::1757418213::1761467560::1::::<><><>0<>0<>1c5da93e418ebfe1b34c3f7e31602ebd<>res://.godot/imported/Walk Frame 1.png-de90ee604eb90a89a0b9b50d49866767.ctex::
-::res://Characters/::1766102270
-bass_fighter.tscn::PackedScene::1875860153562183838::1766102270::0::1::::<><><>0<>0<><>::uid://dchnhipwsuyvp::::res://Scripts/Player.gd<>uid://c1nerifcvgc1k::::res://Scripts/AttackInfo.gd<>uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd<>uid://bcu5deulxa735::::res://Assets/CharAnims/sprite_sheet (4).png<>uid://b8a62gbtxqmes::::res://Assets/4bk8jshundl71 (1).png<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd<>uid://dnh7pj84r3vip::::res://Scripts/StateMachine.gd
-::res://Enemies/::1766102270
-dummy.tscn::PackedScene::8151533911824350896::1766102270::0::1::::<><><>0<>0<><>::uid://b3dpmky87a84r::::res://Scripts/Enemy.gd<>uid://c0if2padvxkdp::::res://icon.svg<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd<>uid://x6kru3dnu02r::::res://healthbar.tscn
-::res://Scripts/::1766102157
+::res://Characters/::1766344115
+bass_fighter.tscn::PackedScene::1875860153562183838::1766344115::0::1::::<><><>0<>0<><>::uid://dchnhipwsuyvp::::res://Scripts/Player.gd<>uid://c1nerifcvgc1k::::res://Scripts/AttackInfo.gd<>uid://bvhync7p3nbd7::::res://Scripts/Hitbox.gd<>uid://bcu5deulxa735::::res://Assets/CharAnims/sprite_sheet (4).png<>uid://b8a62gbtxqmes::::res://Assets/4bk8jshundl71 (1).png<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd<>uid://cdfyryw3v0bms::::res://Scripts/InBuffer.gd<>uid://dnh7pj84r3vip::::res://Scripts/StateMachine.gd
+::res://Enemies/::1766344115
+dummy.tscn::PackedScene::8151533911824350896::1766344115::0::1::::<><><>0<>0<><>::uid://b3dpmky87a84r::::res://Scripts/Enemy.gd<>uid://c0if2padvxkdp::::res://icon.svg<>uid://cpg0tt70pxbb3::::res://Scripts/HurtBox.gd<>uid://x6kru3dnu02r::::res://healthbar.tscn
+::res://Scripts/::1766361855
 AttackAct.gd::GDScript/GDScript::1266021628165338135::1761697071::0::1::::AttackAct<>Node<><>0<>0<><>::
-AttackInfo.gd::GDScript/GDScript::6624861867275266438::1749397200::0::1::::attackInfo<>Node2D<><>0<>0<><>::
+AttackInfo.gd::GDScript/GDScript::6624861867275266438::1766189166::0::1::::attackInfo<>Node2D<><>0<>0<><>::
 AttackRec.gd::GDScript/GDScript::3595148797361579429::1762515150::0::1::::AttackRec<>Node<><>0<>0<><>::
 AttackStart.gd::GDScript/GDScript::6612287662655432540::1761669907::0::1::::AttackStart<>Node<><>0<>0<><>::
 bass_fighter_states.gd::GDScript/GDScript::2038503238841713731::1749398183::0::1::::<>Node<><>0<>0<><>::
 cancelCheck.gd::GDScript/GDScript::1001301043479165721::1761671485::0::1::::cancelCheck<>Node<><>0<>0<><>::
-CharacterCode.gd::GDScript::6874610319861821376::1766102157::0::1::::<>CharacterBody2D<><>0<>0<><>::
-Enemy.gd::GDScript::4358834187089521167::1766101783::0::1::::<>CharacterBody2D<><>0<>0<><>::
-fight_data.gd::GDScript/GDScript::3720998752301840960::1749397200::0::1::::<>Node<><>0<>0<><>::
+CharacterCode.gd::GDScript::6874610319861821376::1766361855::0::1::::<>CharacterBody2D<><>0<>0<><>::
+Enemy.gd::GDScript/GDScript::4358834187089521167::1766189603::0::1::::<>CharacterBody2D<><>0<>0<><>::
+fight_data.gd::GDScript/GDScript::3720998752301840960::1766169574::0::1::::<>Node<><>0<>0<><>::
 getGeneralInputs.gd::GDScript/GDScript::3521290124871174922::1761692768::0::1::::generalInputs<>Node<><>0<>0<><>::
-Hitbox.gd::GDScript::3876317622717260946::1766007758::0::1::::HitBox<>Area2D<><>0<>0<><>::
-HurtBox.gd::GDScript::5839613191918631050::1765998905::0::1::::HurtBox<>Area2D<><>0<>0<><>::
-idle.gd::GDScript::6690984669348600241::1766079451::0::1::::Idle<>Node2D<><>0<>0<><>::
-InBuffer.gd::GDScript::4995218649240716230::1765832681::0::1::::inputBuffer<>Node<><>0<>0<><>::
+Hitbox.gd::GDScript/GDScript::3876317622717260946::1766189358::0::1::::HitBox<>Area2D<><>0<>0<><>::
+HurtBox.gd::GDScript/GDScript::5839613191918631050::1766189358::0::1::::HurtBox<>Area2D<><>0<>0<><>::
+idle.gd::GDScript/GDScript::6690984669348600241::1766079451::0::1::::Idle<>Node2D<><>0<>0<><>::
+InBuffer.gd::GDScript/GDScript::4995218649240716230::1765832681::0::1::::inputBuffer<>Node<><>0<>0<><>::
 Jump.gd::GDScript/GDScript::1359268790503166041::1763337063::0::1::::<>Node<><>0<>0<><>::
 Player.gd::GDScript/GDScript::7314892648480399993::1759505866::0::1::::<>CharacterBody2D<><>0<>0<><>::
 StateMachine.gd::GDScript/GDScript::8088137918359409987::1759505866::0::1::::uniStateMachine<>Node<><>0<>0<><>::
-::res://TestEnv/::1766102270
-level_z.tscn::PackedScene::8677519012600107284::1766102270::0::1::::<><><>0<>0<><>::uid://btaqknrnfggjw::::res://Scripts/fight_data.gd<>uid://cpkao7dkjfwc6::::res://character_states.tscn<>uid://doewtp5o5ss61::::res://Enemies/dummy.tscn
+::res://TestEnv/::1766344115
+level_z.tscn::PackedScene::8677519012600107284::1766344115::0::1::::<><><>0<>0<><>::uid://btaqknrnfggjw::::res://Scripts/fight_data.gd<>uid://cpkao7dkjfwc6::::res://character_states.tscn<>uid://doewtp5o5ss61::::res://Enemies/dummy.tscn<>uid://x6kru3dnu02r::::res://healthbar.tscn<>uid://cdihpxiom4x12::::res://TestEnv/ui_canvas_layer.gd
+ui_canvas_layer.gd::GDScript/GDScript::5000375947239504083::1766169574::0::1::::<>CanvasLayer<><>0<>0<><>::

@@ -11,6 +11,21 @@ size = Vector2(123, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qawet"]
 size = Vector2(127, 124)
 
+[sub_resource type="Animation" id="Animation_oq4ip"]
+resource_name = "HitStun"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333),
+"transitions": PackedFloat32Array(2),
+"update": 0,
+"values": [Color(0.569769, 0.0267023, 0.235823, 0.796078)]
+}
+
 [sub_resource type="Animation" id="Animation_qawet"]
 length = 0.001
 tracks/0/type = "value"
@@ -51,21 +66,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_oq4ip"]
-resource_name = "HitStun"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.233333),
-"transitions": PackedFloat32Array(2),
-"update": 0,
-"values": [Color(0.569769, 0.0267023, 0.235823, 0.796078)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oq4ip"]

@@ -147,6 +147,23 @@ tracks/0/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_akxes"]
+resource_name = "HitStun1"
+length = 0.333336
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
 [sub_resource type="Animation" id="Animation_son6v"]
 resource_name = "Idle"
 step = 0.0166667
@@ -242,23 +259,6 @@ tracks/4/keys = {
 resource_name = "turnAround"
 length = 0.116669
 step = 0.0166667
-
-[sub_resource type="Animation" id="Animation_akxes"]
-resource_name = "HitStun1"
-length = 0.333336
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.133333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nhic8"]
 _data = {
