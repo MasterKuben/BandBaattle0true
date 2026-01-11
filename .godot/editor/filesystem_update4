@@ -1,2 +1,11 @@
-res://character_states.tscn
 res://Scripts/CharacterCode.gd
+res://knockdown.gd
+res://TestEnv/level_z.tscn
+res://Enemies/dummy.tscn
+res://Characters/bass_fighter.tscn
+res://character_states.tscn
+res://player_replay.tscn
+res://hitbox.tscn
+res://hurtbox.tscn
+res://healthbar.tscn
+res://Scripts/knockdown.tscn

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cctbsk2jrhgve"]
+
+[ext_resource type="Script" uid="uid://bmpemhd3jjvap" path="res://knockdown.gd" id="1_uso24"]
+
+[node name="Knockdown" type="Node"]
+script = ExtResource("1_uso24")

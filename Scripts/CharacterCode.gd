@@ -108,7 +108,8 @@ func _physics_process(delta: float) -> void:
 			"Knockdown":#this is when they are on the ground, player gets up when button is hit
 				pass
 			"HardKnockdown":
-				pass
+				$AnimationPlayer.play("CurrentState")
+				
 			"Super":
 				pass
 			"Summon":
@@ -152,7 +153,7 @@ func _physics_process(delta: float) -> void:
 			"Knockdown":
 				pass
 			"HardKnockdown":
-				pass
+				$AnimationPlayer.play(CurrentState)
 			#"Down_Back":
 				#pass
 			#"Backward":
@@ -253,6 +254,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		CurrentState = "Idle"
 	elif CurrentState == "KnockdownFall":
 		CurrentState = "Knockdown";
+	elif CurrentState == "HardKnockdown" && CurrentState == "HardKnockdown":
+		CurrentState = "Idle"
 	
 		
 func on_state_enter(state):
