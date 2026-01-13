@@ -1,3 +1,4 @@
+class_name fighter
 extends CharacterBody2D
 
 @onready var buffer = $inputBuffer
@@ -5,6 +6,7 @@ extends CharacterBody2D
 @onready var aActive = $AttackAct
 @onready var aStartState = $AttackStart
 @onready var aRec = $AttackRec
+@onready var knockdown = $knockdown
 @onready var direction = 1
 @onready var replay = $replayRecord
 @onready var healthbar = $health
@@ -55,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	var instru = Input.is_action_just_pressed("I%s" % [playerIndex])
 	var easy_special = Input.is_action_just_pressed("S%s" % [playerIndex])
 	var dash = Input.is_action_just_pressed("D%s" % [playerIndex])
+	var attacks = [light, heavy, instru, easy_special,dash]
 	
 	
 	if hit == false:
@@ -151,7 +154,8 @@ func _physics_process(delta: float) -> void:
 			"KnockdownFall":
 				pass
 			"Knockdown":
-				pass
+				$AnimationPlayer.play(CurrentState)
+				CurrentState = knockdown.inputs(attacks, movementInputs)
 			"HardKnockdown":
 				$AnimationPlayer.play(CurrentState)
 			#"Down_Back":
@@ -159,7 +163,7 @@ func _physics_process(delta: float) -> void:
 			#"Backward":
 				#pass
 			"Hitstun":
-				var ranHit = randi_range(1,5)#this will choose one of 5 random frames for a hit on a character
+				var ranHit = randi_range(1,3)#this will choose one of 5 random frames for a hit on a character
 				if $AnimationPlayer.current_animation != "HitStun%s"%[ranHit]:
 					$AnimationPlayer.play("HitStun%s"%[ranHit])
 					hitStunTimer.start()

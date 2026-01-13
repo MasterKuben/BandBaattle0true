@@ -1,3 +1,5 @@
+knockdown
+fighter
 Node
 Timer
 CanvasLayer
@@ -11,4 +13,3 @@ Node2D
 replayRecord
 Sprite2D
 Crouch_State
-AttackRec

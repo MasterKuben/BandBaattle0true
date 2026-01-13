@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cpkao7dkjfwc6"]
+[gd_scene load_steps=27 format=3 uid="uid://cpkao7dkjfwc6"]
 
 [ext_resource type="Script" uid="uid://c47d3exainxnc" path="res://Scripts/CharacterCode.gd" id="1_kpcjk"]
 [ext_resource type="Script" uid="uid://c2lfsmf1a5s46" path="res://Scripts/idle.gd" id="2_60r2y"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bjsk22j7t1gog" path="res://backward.gd" id="10_kkd1c"]
 [ext_resource type="PackedScene" uid="uid://b4bldlrvyoa1s" path="res://hurtbox.tscn" id="11_3h5sg"]
 [ext_resource type="Script" uid="uid://bvhync7p3nbd7" path="res://Scripts/Hitbox.gd" id="12_rk6ac"]
+[ext_resource type="Script" uid="uid://bmpemhd3jjvap" path="res://knockdown.gd" id="14_bph4l"]
 
 [sub_resource type="Animation" id="Animation_y0fu3"]
 resource_name = "5L"
@@ -260,12 +261,48 @@ resource_name = "turnAround"
 length = 0.116669
 step = 0.0166667
 
+[sub_resource type="Animation" id="Animation_lkc5l"]
+resource_name = "HitStun2"
+length = 0.333336
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_aewt8"]
+resource_name = "HitStun3"
+length = 0.333336
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.0666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 0, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nhic8"]
 _data = {
 &"5L": SubResource("Animation_y0fu3"),
 &"6L": SubResource("Animation_agecc"),
 &"Dash": SubResource("Animation_kkd1c"),
 &"HitStun1": SubResource("Animation_akxes"),
+&"HitStun2": SubResource("Animation_lkc5l"),
+&"HitStun3": SubResource("Animation_aewt8"),
 &"Idle": SubResource("Animation_son6v"),
 &"RESET": SubResource("Animation_mcea8"),
 &"turnAround": SubResource("Animation_3h5sg")
@@ -354,6 +391,10 @@ shape = SubResource("RectangleShape2D_akxes")
 disabled = true
 
 [node name="HitStunTimer" type="Timer" parent="TestMan"]
+
+[node name="knockdown" type="Node" parent="TestMan"]
+script = ExtResource("14_bph4l")
+metadata/_custom_type_script = "uid://bmpemhd3jjvap"
 
 [connection signal="animation_finished" from="TestMan/AnimationPlayer" to="TestMan" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="TestMan/HitStunTimer" to="TestMan" method="_on_hit_stun_timer_timeout"]
